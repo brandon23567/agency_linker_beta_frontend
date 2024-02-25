@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import IndexPage from "./pages/IndexPage/IndexPage.jsx"
 import AgencyHomePage from "./pages/AgencyHomePage/AgencyHomePage.jsx"
 import AgencyClientContainerPage from './pages/AgencyClientContainerPage/AgencyClientContainerPage.jsx';
@@ -159,7 +159,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
     	<RouterProvider router={router}>
-			<SideNavbar />
+			<SpeedInsights />
 		</RouterProvider>
   	</React.StrictMode>
 );
