@@ -1,0 +1,132 @@
+import React, { useState, useEffect } from 'react'
+import "./TeamMembersPage.css"
+import SideNavbar from '../../components/SideNavbar/SideNavbar'
+import ProfileImage1 from "../../images/test_imgs/1 (1).jpg"
+import axios from 'axios'
+import Cookies from 'js-cookie'
+import RefreshToken from '../../components/RefreshToken/RefreshToken'
+import { Link, useParams } from 'react-router-dom';
+
+
+const TeamMembersPage = () => {
+
+    const { currentTeamLink } = useParams();
+
+    const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
+    const [currentUserUsername, setCurrentUserUsername] = useState("");
+
+    const [teamMembers, setTeamMembers] = useState([]);
+
+    const getCurrentTeamUniqueLink = () => {
+        const currentLink = {currentTeamLink}
+        const actual_current_team_link = currentLink.currentTeamLink;
+        console.log("your current team link", actual_current_team_link)
+    }
+
+    const getCurrentTeamMembers = () => {
+        const currentTeamUniquLink = {currentTeamLink}
+        const actualCurrentTeamUniqueLink = currentTeamUniquLink.currentTeamLink;
+
+        const currentUserToken = Cookies.get("access_token");
+        const url = `http://localhost:8000/api/agency_side/get_current_team_members_inside_team/${actualCurrentTeamUniqueLink}/`;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
+
+        axios.get(url)
+            .then(response => {
+                console.log(response.data);
+                setTeamMembers(response.data.team_members);
+            })
+            .catch(error => {
+                console.error("Error fetching team members:", error);
+            });
+    }
+
+    const getCurrentAgencyUserAuthenticated = () => {
+
+        const currentUserToken = Cookies.get("access_token");
+        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
+        const config = {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "Authorization": `Bearer ${currentUserToken}`
+            }
+        }
+
+        axios.get(url, config).then((response) => {
+            console.log(response.data);
+
+            const { "current user profile image": profileImageUrl } = response.data;
+			const { "current user user": usersUsername } = response.data;
+
+            setCurrentUserProfileImg(profileImageUrl);
+            setCurrentUserUsername(usersUsername);
+
+        })
+
+    }
+
+    useEffect(() => {
+        getCurrentAgencyUserAuthenticated();
+        getCurrentTeamUniqueLink();
+        getCurrentTeamMembers();
+    }, [currentTeamLink])
+
+    return (
+        <div className='team_members_page_outer_main_container'>
+            <RefreshToken />
+            <div className='container'>
+                <div className='navbar_container'>
+                    <SideNavbar 
+                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUsername={currentUserUsername} 
+                    />
+                </div>
+
+                <div className='content_container'>
+                    <h2>All team members on the current team</h2>
+
+                    <div className='add_new_team_member_btn_container'>
+                        <button className='add_new_team_member'>Add New Member</button>
+                    </div>
+
+                    <div className='team_members_container'>
+                        {teamMembers.map(member => (
+                            <div className='single_member' key={member.username}>
+                                <div className='single_member_top_part'>
+                                    <img src={member.profile_image_url} alt='user_profile_img' className='user_profile_img' />
+                                </div>
+                                <div className='single_member_bottom_part'>
+                                    <h3>
+                                        <Link to="#" className='user_username'>@{member.username}</Link>
+                                    </h3>
+                                    <p>
+                                        Role: {member.role}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* <div className='team_members_container'>
+                        <div className='single_member'>
+                            <div className='single_member_top_part'>
+                                <img src={ProfileImage1} alt='user_profile_img' className='user_profile_img' />
+                            </div>
+                            <div className='single_member_bottom_part'>
+                                <h3>
+                                    <Link to="" className='user_username'>@Username</Link>
+                                </h3>
+                                <p>
+                                    Role: Software developer
+                                </p>
+                            </div>
+                        </div>
+                    </div> */}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default TeamMembersPage

@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_outer_join_team_as_client_continaer .container .content_container{
+    margin-left: 270px;
+    margin-right: 16px;
+}
+
+.main_outer_join_team_as_client_continaer .container .content_container h2{
+    margin-bottom: 1.5rem;
+}
+
+.main_outer_join_team_as_client_continaer .container .content_container .actual_form_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.main_outer_join_team_as_client_continaer .container .content_container .actual_form_container .single_input{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_outer_join_team_as_client_continaer .container .content_container .actual_form_container .single_input input{
+    padding: 18px;
+    font-size: 17px;
+    border: 1px solid rgb(212, 212, 212);
+}
+
+.main_outer_join_team_as_client_continaer .container .content_container .actual_form_container .join_team_as_client_btn_container .join_team_as_client_btn{
+    border: none;
+    background: none;
+    border-radius: 40px;
+    cursor: pointer;
+    background-color: green;
+    color: #fff;
+    padding: 20px 2.5rem;
+}

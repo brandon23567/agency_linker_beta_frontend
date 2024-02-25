@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_outer_client_home_container .container .content_container{
+    margin-left: 270px;
+    margin-right: 16px;
+}
+
+.main_outer_client_home_container .container .content_container h1{
+    margin-bottom: 1.5rem;
+}
+
+.main_outer_client_home_container .container .content_container .current_clients_agency_teams .single_client_agency_team{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.main_outer_client_home_container .container .content_container .current_clients_agency_teams .single_client_agency_team .actual_link_to_team_detail{
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(212, 212, 212);
+    padding: 15px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.main_outer_client_home_container .container .content_container .current_clients_agency_teams .single_client_agency_team .actual_link_to_team_detail:hover{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.main_outer_client_home_container .container .content_container .current_clients_agency_teams .single_client_agency_team .actual_link_to_team_detail .team_leftside .current_team_image{
+    width: 60px;
+    height: 60px;
+    border-radius: 40%;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.main_outer_client_home_container .container .content_container .current_clients_agency_teams .single_client_agency_team .actual_link_to_team_detail .team_right_side h3{
+    color: #000;
+}

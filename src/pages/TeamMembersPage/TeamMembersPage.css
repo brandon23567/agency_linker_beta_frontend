@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.team_members_page_outer_main_container .container .content_container{
+    margin-right: 15px;
+    margin-left: 270px;
+}
+
+.team_members_page_outer_main_container .container .content_container h2{
+    margin-bottom: 1rem;
+}
+
+.team_members_page_outer_main_container .container .content_container .add_new_team_member_btn_container .add_new_team_member{
+    margin-bottom: 2rem;
+    padding: 15px 2rem;
+    background: none;
+    border: none;
+    color: #fff;
+    background-color: green;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.team_members_page_outer_main_container .container .content_container .team_members_container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.team_members_page_outer_main_container .container .content_container .team_members_container .single_member{
+    padding: 15px;
+    border: 1px solid rgb(212, 212, 212);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.team_members_page_outer_main_container .container .content_container .team_members_container .single_member:hover{
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.team_members_page_outer_main_container .container .content_container .team_members_container .single_member .single_member_top_part .user_profile_img{
+    margin-bottom: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.team_members_page_outer_main_container .container .content_container .team_members_container .single_member .single_member_bottom_part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.team_members_page_outer_main_container .container .content_container .team_members_container .single_member .single_member_bottom_part h3{
+    margin-bottom: 15px;
+}
+
+.team_members_page_outer_main_container .container .content_container .team_members_container .single_member .single_member_bottom_part h3 .user_username{
+    text-decoration: none;
+    color: #000;
+}

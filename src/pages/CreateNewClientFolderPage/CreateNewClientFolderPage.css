@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.outer_main_create_new_folder_container .container .content_container{
+    margin-left: 270px;
+    margin-right: 16px;
+}
+
+.outer_main_create_new_folder_container .container .content_container h2{
+    margin-bottom: 26px;
+    /* margin-top: 10px; */
+}
+
+.outer_main_create_new_folder_container .container .content_container .actual_form .single_input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.outer_main_create_new_folder_container .container .content_container .actual_form .single_input input{
+    padding: 20px 1.2rem;
+    border: 1px solid rgb(212, 212, 212);
+    font-size: 17px;
+}
+
+.outer_main_create_new_folder_container .container .content_container .actual_form .add_new_client_folder_btn_container .add_new_client_folder_btn{
+    padding: 20px 2.6rem;
+    background: none;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    background-color: blue;
+    color: #fff;
+}

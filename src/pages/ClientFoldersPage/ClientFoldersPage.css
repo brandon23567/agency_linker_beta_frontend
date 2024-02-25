@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .client_folders_main_outer_container .container{
+    background-color: #f4f8ff;
+    height: 100%;
+} */
+
+.client_folders_main_outer_container .container .content_container{
+    margin-left: 270px;
+    margin-right: 15px;
+}
+
+.client_folders_main_outer_container .container .content_container .add_new_folder_btn_container{
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.client_folders_main_outer_container .container .content_container .add_new_folder_btn_container .add_new_folder{
+    background: none;
+    border: none;
+    cursor: pointer;
+    /* background-color: pink; */
+    background-color: green;
+    color: #fff;
+    border-radius: 40px;
+    padding: 17px 2rem;
+}
+
+.client_folders_main_outer_container .container .content_container .client_folders_container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+}
+
+.client_folders_main_outer_container .container .content_container .client_folders_container .single_folder{
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 25px;
+    background-color: #Fff;
+}
+
+.client_folders_main_outer_container .container .content_container .client_folders_container .single_folder .single_folder_leftside .folder_icon_img{
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+}
+
+/* this class here acts as a container for the full folder container */
+.client_folders_main_outer_container .container .content_container .client_folders_container .single_folder .single_folder_rightside .folder_name{
+    text-decoration: none;
+    color: #000;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.client_folders_main_outer_container .container .content_container .client_folders_container .single_folder:hover{
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.client_folders_main_outer_container .container .content_container .client_folders_container .single_folder .single_folder_rightside .folder_name .actual_folder_name{
+    font-weight: 500;
+    margin-bottom: 10px;
+}

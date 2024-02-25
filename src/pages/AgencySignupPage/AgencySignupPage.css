@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_outer_agency_signup_container .container{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.main_outer_agency_signup_container .container .top_navbar_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+    border-bottom: 1px solid rgb(212, 212, 212);
+    margin-bottom: 1.5rem;
+}
+
+.main_outer_agency_signup_container .container .top_navbar_container .logo_container h2{
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.main_outer_agency_signup_container .container .top_navbar_container .navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_outer_agency_signup_container .container .top_navbar_container .navbar li{
+    list-style: none;
+    margin: 0px 1rem;
+}
+
+.main_outer_agency_signup_container .container .top_navbar_container .navbar li .navbar_link{
+    text-decoration: none;
+    color: #000;
+    font-size: 17px;
+}
+
+.main_outer_agency_signup_container .container .actual_signup_container h2{
+    margin-bottom: 1.5rem;
+}
+
+
+.main_outer_agency_signup_container .container .actual_signup_container .actual_form_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_outer_agency_signup_container .container .actual_signup_container .actual_form_container .single_input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.main_outer_agency_signup_container .container .actual_signup_container .actual_form_container .single_input label{
+    margin-bottom: 8px;
+    font-weight: 350;
+}
+
+.main_outer_agency_signup_container .container .actual_signup_container .actual_form_container .single_input input{
+    padding: 20px 1rem;
+    border: 1px solid rgb(212, 212, 212);
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.main_outer_agency_signup_container .container .actual_signup_container .actual_form_container .signup_btn_container .signup_btn{
+    padding: 17px 2.5rem;
+    background: none;
+    border: none;
+    color: #fff;
+    background-color: green;
+    cursor: pointer;
+    border-radius: 40px;
+    margin-bottom: 2rem;
+}

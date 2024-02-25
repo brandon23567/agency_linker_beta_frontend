@@ -1,0 +1,41 @@
+.create_new_client_task_container .container .content_container{
+    margin-left: 270px;
+    margin-right: 16px;
+}
+
+.create_new_client_task_container .container .content_container h2{
+    margin-bottom: 25px;
+}
+
+.create_new_client_task_container .container .content_container .actual_form .single_input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.create_new_client_task_container .container .content_container .actual_form .single_input input{
+    padding: 17px 1.2rem;
+    border: 1px solid rgb(212, 212, 212);
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.create_new_client_task_container .container .content_container .actual_form .single_input textarea{
+    padding: 1.5rem;
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    border: 1px solid rgb(212, 212, 212);
+    height: 220px;
+}
+
+.create_new_client_task_container .container .content_container .actual_form .create_new_client_task_btn_container .create_new_client_task_btn{
+    padding: 18px 2rem;
+    background: none;
+    border: none;
+    color: #fff;
+    background-color: blue;
+    cursor: pointer;
+    border-radius: 40px;
+}

@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.main_new_client_task_outer_container .container .content_container{
+    margin-left: 270px;
+    margin-right: 16px;
+}
+
+.main_new_client_task_outer_container .container .content_container .actual_main_form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.main_new_client_task_outer_container .container .content_container .actual_main_form .single_input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.main_new_client_task_outer_container .container .content_container .actual_main_form .single_input input{
+    border: 1px solid rgb(212, 212, 212);
+    padding: 17px 1.2rem;
+    font-weight: 300;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.main_new_client_task_outer_container .container .content_container .actual_main_form .single_input textarea{
+    border: 1px solid rgb(212, 212, 212);
+    padding: 18px 1.6rem;
+    font-weight: 300;
+    font-size: 17px;
+    margin-bottom: 20px;
+    height: 250px;
+}
+
+.main_new_client_task_outer_container .container .content_container .actual_main_form .create_new_client_task_btn_container .create_new_client_task_btn{
+    border: none;
+    background: none;
+    padding: 18px 2rem;
+    cursor: pointer;
+    background-color: green;
+    color: #fff;
+    border-radius: 40px;
+}

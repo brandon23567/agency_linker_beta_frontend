@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_new_client_container_outer_container .container .content_container{
+    margin-left: 270px;
+    margin-right: 16px;
+}
+
+.main_new_client_container_outer_container .container .content_container h2{
+    margin-bottom: 25px;
+}
+
+.main_new_client_container_outer_container .container .content_container .actual_form_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.main_new_client_container_outer_container .container .content_container .actual_form_container .single_input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.main_new_client_container_outer_container .container .content_container .actual_form_container .single_input input{
+    padding: 15px 1.3rem;
+    border: 1px solid rgb(212, 212, 212);
+    font-size: 16px;
+}
+
+.main_new_client_container_outer_container .container .content_container .actual_form_container .single_input textarea{
+    width: 100%;
+    height: 300px;
+    padding: 20px;
+    font-size: 17px;
+    border: 1px solid blue;
+}
+
+.main_new_client_container_outer_container .container .content_container .actual_form_container .create_new_client_container_btn_container .create_new_client_container_btn{
+    padding: 20px 2rem;
+    background: none;
+    border: none;
+    color: #fff;
+    background-color: blue;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}

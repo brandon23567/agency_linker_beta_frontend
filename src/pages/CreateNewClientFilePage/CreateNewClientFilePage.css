@@ -1,0 +1,35 @@
+.main_outer_create_client_file_container .container .content_container{
+    margin-left: 270px;
+    margin-right: 17px;
+}
+
+.main_outer_create_client_file_container .container .content_container h2{
+    margin-bottom: 25px;
+}
+
+.main_outer_create_client_file_container .container .content_container .actual_form .single_input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.main_outer_create_client_file_container .container .content_container .actual_form .single_input input{
+    border: 1px solid rgb(212, 212, 212);
+    padding: 18px 1.2rem;
+    font-size: 17px;
+}
+
+.main_outer_create_client_file_container .container .content_container .actual_form .add_new_client_file_btn_container .add_new_client_file_btn{
+    padding: 20px 2.6rem;
+    background: none;
+    border: none;
+    background-color: green;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 40px;
+}
+
+
+
