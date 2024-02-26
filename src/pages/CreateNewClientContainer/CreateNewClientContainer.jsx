@@ -18,6 +18,9 @@ const CreateNewClientContainer = () => {
     const [clientEmail, setClientEmail] = useState("");
     const [clientBudget, setClientBudget] = useState("");
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const createNewClientContainer = (e) => {
         e.preventDefault();
         const currentTeamUniqueLink = {slug};
@@ -29,7 +32,7 @@ const CreateNewClientContainer = () => {
         formData.append("clientBudget", clientBudget)
         formData.append("currentTeamUniqueLink", teamLinkUrl)
 
-        const url = "http://localhost:8000/api/agency_side/create_new_client_container/"
+        const url = `${currentDevelopmentEnviroment}api/agency_side/create_new_client_container/`
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -37,7 +40,6 @@ const CreateNewClientContainer = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
-            console.log(response.data)
         })
         .catch((error) => {
             alert("Only team admins can create a new client container");
@@ -46,7 +48,7 @@ const CreateNewClientContainer = () => {
     }
 
     const getCurrentTeamsDetails = () => {
-        const url = `http://localhost:8000/api/agency_side/go_to_agency_team_detail/${slug}`
+        const url = `${currentDevelopmentEnviroment}api/agency_side/go_to_agency_team_detail/${slug}`
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -54,14 +56,13 @@ const CreateNewClientContainer = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data)
         })
     }
 
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -71,7 +72,6 @@ const CreateNewClientContainer = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
 
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;

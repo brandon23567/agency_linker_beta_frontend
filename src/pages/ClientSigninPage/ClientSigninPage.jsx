@@ -9,6 +9,9 @@ const ClientSigninPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const signNewAgencyUser = (e) => {
         e.preventDefault();
 
@@ -16,7 +19,7 @@ const ClientSigninPage = () => {
         formData.append("username", username);
         formData.append("password", password);
 
-        const url = "http://localhost:8000/api/authentication/login_client_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/login_client_user/`;
         const config = {
             headers: {
                 "Content-Type": "multipart/form-data"
@@ -29,7 +32,6 @@ const ClientSigninPage = () => {
             Cookies.set("access_token", access_token)
 			Cookies.set("refresh_token", refresh_token)
 
-            console.log(response);
             alert("Signin was successful");
 
             window.location.href = "/client_side/agency_client_home";

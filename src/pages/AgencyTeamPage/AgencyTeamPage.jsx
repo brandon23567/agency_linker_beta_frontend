@@ -12,8 +12,11 @@ const AgencyTeamPage = () => {
     const [currentUserUsername, setCurrentUserUsername] = useState("");
     const [currentUserTeams, setCurrentUserTeams] = useState([])
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const getAllTeamsCurrentUserIsAPartOf = () => {
-        const url = "http://localhost:8000/api/agency_side/get_user_teams/"
+        const url = `${currentDevelopmentEnviroment}api/agency_side/get_user_teams/`
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -29,7 +32,7 @@ const AgencyTeamPage = () => {
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {

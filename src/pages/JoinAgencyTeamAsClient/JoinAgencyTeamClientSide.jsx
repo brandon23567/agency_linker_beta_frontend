@@ -12,12 +12,15 @@ const JoinAgencyTeamClientSide = () => {
     const [teamUniqueLink, setTeamUniqueLink] = useState("")
     const [currentClientContainerName, setCurrentCloientContainerName] = useState("")
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const joinAgencyTeamAsClient = (e) => {
         e.preventDefault();
         const formData = new FormData()
         formData.append("teamUniqueLink", teamUniqueLink)
         formData.append("currentClientContainerName", currentClientContainerName)
-        const url = "http://localhost:8000/api/agency_client_side/join_agency_team_as_client/"
+        const url = `${currentDevelopmentEnviroment}api/agency_client_side/join_agency_team_as_client/`;
         const currentUserToken = Cookies.get("access_token");
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
@@ -28,7 +31,6 @@ const JoinAgencyTeamClientSide = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
-            console.log(response.data);
             alert("You have joined this team as a client");
             window.location.href = "/client_side/agency_client_home";
         }).catch((error) => {
@@ -38,7 +40,7 @@ const JoinAgencyTeamClientSide = () => {
 
     const getCurrentAuthenticatedClientUser = () => {
         const currentUserToken = Cookies.get("access_token");
-        const url = `http://localhost:8000/api/authentication/get_current_client_user/`;
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_client_user/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -48,8 +50,6 @@ const JoinAgencyTeamClientSide = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
-
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;
 

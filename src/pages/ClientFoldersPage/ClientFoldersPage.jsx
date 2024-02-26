@@ -14,6 +14,9 @@ const ClientFoldersPage = () => {
 
     const { teamUniqueLink, clientName } = useParams();
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const [folders, setFolders] = useState([]);
 
     const getCurrentClientFoldersInContainer = () => {
@@ -23,7 +26,7 @@ const ClientFoldersPage = () => {
         const actualTeamUniqueLink = dataFromUrl.teamUniqueLink;
         const actualClientName = dataFromUrl.clientName
 
-        const url = `http://localhost:8000/api/agency_side/get_folders_inside_current_container/${actualTeamUniqueLink}/client_folders/${actualClientName}/`;
+        const url = `${currentDevelopmentEnviroment}api/agency_side/get_folders_inside_current_container/${actualTeamUniqueLink}/client_folders/${actualClientName}/`;
 
         const config = {
             headers: {
@@ -47,7 +50,7 @@ const ClientFoldersPage = () => {
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -57,7 +60,6 @@ const ClientFoldersPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
 
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;

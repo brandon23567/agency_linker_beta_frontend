@@ -14,10 +14,12 @@ const CreateNewTeamPage = () => {
     const [teamAssignedClient, setTeamAssignedClient] = useState("");
     const [teamProfileImg, setTeamProfileImg] = useState(null);
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
     const CreateNewTeam = (e) => {
         e.preventDefault();
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/agency_side/create_new_agency_team/"
+        const url = `${currentDevelopmentEnviroment}api/agency_side/create_new_agency_team/`
         const config = {
             headers: {
                 "Content-Type": "multipart/form-data",
@@ -31,7 +33,6 @@ const CreateNewTeamPage = () => {
         formData.append("teamProfileImg", teamProfileImg)
 
         axios.post(url, formData, config).then((response) => {
-            console.log(response);
         })
     }
 
@@ -39,7 +40,7 @@ const CreateNewTeamPage = () => {
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -49,8 +50,6 @@ const CreateNewTeamPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
-
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;
 

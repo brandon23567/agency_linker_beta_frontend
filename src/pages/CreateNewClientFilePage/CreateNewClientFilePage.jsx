@@ -17,13 +17,16 @@ const CreateNewClientFilePage = () => {
     const [newActualClientFile, setNewActualClientFile] = useState(null)
     const [fileExtension, setFileExtension] = useState("");
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const createNewClientFile = (e) => {
         e.preventDefault();
         const dataFromUrl = { teamUniqueLink, clientName, clientFolderName }
         const actualTeamUniqueLink = dataFromUrl.teamUniqueLink
         const actualClientName = dataFromUrl.clientName;
         const actualClientFolderName = dataFromUrl.clientFolderName;
-        const url = `http://localhost:8000/api/agency_side/create_new_client_file/${actualTeamUniqueLink}/create_client_file/${actualClientName}/${actualClientFolderName}/`
+        const url = `${currentDevelopmentEnviroment}api/agency_side/create_new_client_file/${actualTeamUniqueLink}/create_client_file/${actualClientName}/${actualClientFolderName}/`
 
         const config = {
             headers: {
@@ -37,14 +40,13 @@ const CreateNewClientFilePage = () => {
         formData.append("fileExtension", fileExtension);
 
         axios.post(url, formData, config).then((response) => {
-            console.log(response)
         })
     }
 
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -54,7 +56,6 @@ const CreateNewClientFilePage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
 
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;

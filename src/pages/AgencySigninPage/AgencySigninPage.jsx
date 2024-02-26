@@ -9,6 +9,9 @@ const AgencySigninPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const signNewAgencyUser = (e) => {
         e.preventDefault();
 
@@ -16,7 +19,7 @@ const AgencySigninPage = () => {
         formData.append("username", username);
         formData.append("password", password);
 
-        const url = "http://localhost:8000/api/authentication/login_agency_user/"
+        const url = `${currentDevelopmentEnviroment}http://localhost:8000/api/authentication/login_agency_user/`
         const config = {
             headers: {
                 "Content-Type": "application/json"

@@ -14,6 +14,9 @@ const ClientSideRequestDetailPage = () => {
 
     const { teamUniqueLink, clientName, client_request_title } = useParams();
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const getCurrentActiveClientRequestClientSide = () => {
 
         const dataFromURL = { teamUniqueLink, clientName, client_request_title }
@@ -24,7 +27,7 @@ const ClientSideRequestDetailPage = () => {
 
         const currentUserToken = Cookies.get("access_token");
 
-        const url = `http://localhost:8000/api/agency_client_side/get_current_client_request_detail/${currentTeamUniqueLink}/${currentClientContainer}/${currentClientRequestTitle}/`;
+        const url = `${currentDevelopmentEnviroment}api/agency_client_side/get_current_client_request_detail/${currentTeamUniqueLink}/${currentClientContainer}/${currentClientRequestTitle}/`;
         axios.defaults.headers.common["Authorization"] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -34,7 +37,6 @@ const ClientSideRequestDetailPage = () => {
         };
 
         axios.get(url, config).then((response) => {
-            console.log(response.data)
             setCurrentClientRequestData(response.data);
         }).catch((error) => {
             console.log(error)
@@ -43,7 +45,7 @@ const ClientSideRequestDetailPage = () => {
 
     const getCurrentAuthenticatedClientUser = () => {
         const currentUserToken = Cookies.get("access_token");
-        const url = `http://localhost:8000/api/authentication/get_current_client_user/`;
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_client_user/`;
         axios.defaults.headers.common["Authorization"] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -53,8 +55,6 @@ const ClientSideRequestDetailPage = () => {
         };
 
         axios.get(url, config).then((response) => {
-        console.log(response.data);
-
         const { "current user profile image": profileImageUrl } = response.data;
         const { "current user user": usersUsername } = response.data;
 

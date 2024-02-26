@@ -16,6 +16,8 @@ const AgencyHomePage = () => {
 
     const [clientContainers, setClientContainers] = useState([]);
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
     const getCurrentTeamUniqueLink = () => {
         const currentLink = {slug}
         const actual_current_team_link = currentLink.slug;
@@ -28,7 +30,7 @@ const AgencyHomePage = () => {
         const currentTeamContainerName = {slug};
         const actualCurrentTeamContainerName = currentTeamContainerName.slug;
 
-        const url = `http://localhost:8000/api/agency_side/get_client_containers_inside_agency_team/${actualCurrentTeamContainerName}/`;
+        const url = `${currentDevelopmentEnviroment}api/agency_side/get_client_containers_inside_agency_team/${actualCurrentTeamContainerName}/`;
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -46,7 +48,7 @@ const AgencyHomePage = () => {
     };
 
     const getCurrentTeamsDetails = () => {
-        const url = `http://localhost:8000/api/agency_side/go_to_agency_team_detail/${slug}`
+        const url = `${currentDevelopmentEnviroment}api/agency_side/go_to_agency_team_detail/${slug}`
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -61,7 +63,7 @@ const AgencyHomePage = () => {
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {

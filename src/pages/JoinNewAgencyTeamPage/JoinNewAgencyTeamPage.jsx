@@ -15,9 +15,12 @@ const JoinNewAgencyTeamPage = () => {
 
     const [agencyUniqueLink, setAgencyUniqueLink] = useState("")
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const JoinAgencyTeam = (e) => {
         e.preventDefault();
-        const url = `http://localhost:8000/api/agency_side/join_agency_team/${slug}/`
+        const url = `${currentDevelopmentEnviroment}api/agency_side/join_agency_team/${slug}/`
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -28,14 +31,13 @@ const JoinNewAgencyTeamPage = () => {
         formData.append("agencyUniqueLink", agencyUniqueLink)
 
         axios.post(url, formData, config).then((response) => {
-            console.log(response);
         })
     }
 
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -45,8 +47,6 @@ const JoinNewAgencyTeamPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
-
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;
 

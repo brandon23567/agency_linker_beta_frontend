@@ -15,13 +15,16 @@ const ClientAgencyTeamDetailPage = () => {
 
     const [requests, setRequests] = useState([]);
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const { agency_team_link, agency_client_container_name } = useParams();
 
     const getAllPreviousMadeClientRequests = () => {
         const teamLinkValue = { agency_team_link, agency_client_container_name }
         const currentTeamUniqueLink = teamLinkValue.agency_team_link
         const currentClientContainer = teamLinkValue.agency_client_container_name
-        const url = `http://localhost:8000/api/agency_client_side/get_current_team_requests/${currentTeamUniqueLink}/${currentClientContainer}/`
+        const url = `${currentDevelopmentEnviroment}api/agency_client_side/get_current_team_requests/${currentTeamUniqueLink}/${currentClientContainer}/`
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -29,7 +32,6 @@ const ClientAgencyTeamDetailPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            // console.log(response.data);
             setRequests(response.data);
         }).catch((error) => {
             console.log(error)
@@ -38,7 +40,7 @@ const ClientAgencyTeamDetailPage = () => {
 
     const getCurrentAuthenticatedClientUser = () => {
         const currentUserToken = Cookies.get("access_token");
-        const url = `http://localhost:8000/api/authentication/get_current_client_user/`;
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_client_user/`;
         axios.defaults.headers.common[
         "Authorization"
         ] = `Bearer ${currentUserToken}`;
@@ -50,7 +52,6 @@ const ClientAgencyTeamDetailPage = () => {
         };
 
         axios.get(url, config).then((response) => {
-        console.log(response.data);
 
         const { "current user profile image": profileImageUrl } = response.data;
         const { "current user user": usersUsername } = response.data;

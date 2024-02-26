@@ -16,6 +16,9 @@ const CreateNewClientRequest = () => {
 
     const { agency_team_link, agency_client_container_name } = useParams();
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const createNewClientRequestForTeam = (e) => {
         e.preventDefault();
         const teamLinkValue = { agency_team_link, agency_client_container_name }
@@ -29,7 +32,7 @@ const CreateNewClientRequest = () => {
 
         const currentUserToken = Cookies.get("access_token");
 
-        const url = `http://localhost:8000/api/agency_client_side/create_new_client_request/${currentTeamUniqueLink}/`
+        const url = `${currentDevelopmentEnviroment}api/agency_client_side/create_new_client_request/${currentTeamUniqueLink}/`
         const config = {
             headers: {
                 "Content-Type": "application/json",
@@ -38,7 +41,6 @@ const CreateNewClientRequest = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
-            console.log(response.data)
         }).catch((error) => {
             console.log(error)
         })
@@ -46,7 +48,7 @@ const CreateNewClientRequest = () => {
 
     const getCurrentAuthenticatedClientUser = () => {
         const currentUserToken = Cookies.get("access_token");
-        const url = `http://localhost:8000/api/authentication/get_current_client_user/`;
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_client_user/`;
         axios.defaults.headers.common[
         "Authorization"
         ] = `Bearer ${currentUserToken}`;
@@ -58,7 +60,6 @@ const CreateNewClientRequest = () => {
         };
 
         axios.get(url, config).then((response) => {
-        console.log(response.data);
 
         const { "current user profile image": profileImageUrl } = response.data;
         const { "current user user": usersUsername } = response.data;
@@ -105,8 +106,6 @@ const CreateNewClientRequest = () => {
                             <button type="submit" className="upload_request_btn">Upload Request</button>
                         </div>
                     </form>
-
-                    {/* <button onClick={() => getDetailsFromAddressBar()}>Testing</button> */}
                 </div>
             </div>
         </div>

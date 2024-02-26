@@ -11,6 +11,9 @@ const ClientSignupPage = () => {
     const [userProfileImg, setUserProfileImg] = useState(null);
     const [password, setPassword] = useState("");
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const signNewAgencyUser = (e) => {
         e.preventDefault();
 
@@ -20,7 +23,7 @@ const ClientSignupPage = () => {
         formData.append("userProfileImg", userProfileImg);
         formData.append("password", password);
 
-        const url = "http://localhost:8000/api/authentication/register_client_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/register_client_user/`;
         const config = {
             headers: {
                 "Content-Type": "multipart/form-data"
@@ -33,7 +36,6 @@ const ClientSignupPage = () => {
             Cookies.set("access_token", access_token)
 			Cookies.set("refresh_token", refresh_token)
 
-            console.log(response);
             alert("Signup was successful");
 
             window.location.href = "/select_types/client_signin";

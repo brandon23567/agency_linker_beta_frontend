@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./ClientRequestDetailPage.css"
 import SideNavbar from "../../components/SideNavbar/SideNavbar.jsx"
-// import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import RefreshToken from '../../components/RefreshToken/RefreshToken';
@@ -16,12 +15,15 @@ const ClientRequestDetailPage = () => {
 
     const { teamUniqueLink, clientName, client_request_title } = useParams();
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const getCurrentActiveClientRequest = () => {
         const currentTeamUniqueLink = teamUniqueLink;
         const currentClientContainer = clientName;
         const currentClientRequestTitle = client_request_title;
 
-        const url = `http://localhost:8000/api/agency_side/get_current_client_request_detail/${currentTeamUniqueLink}/${currentClientContainer}/${currentClientRequestTitle}/`;
+        const url = `${currentDevelopmentEnviroment}api/agency_side/get_current_client_request_detail/${currentTeamUniqueLink}/${currentClientContainer}/${currentClientRequestTitle}/`;
         const config = {
             headers: {
                 "Content-Type": "multipart/form-data"
@@ -29,7 +31,6 @@ const ClientRequestDetailPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data)
             setCurrentClientRequestData(response.data);
         }).catch((error) => {
             console.log(error)
@@ -39,7 +40,7 @@ const ClientRequestDetailPage = () => {
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -49,8 +50,6 @@ const ClientRequestDetailPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
-
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;
 
@@ -91,8 +90,6 @@ const ClientRequestDetailPage = () => {
                         <p className='date_requested'>
                             {formatDate(currentClientRequestData.date_requested)}
                         </p>
-
-                        {/* <p className='request_status'>Status: Ongoing</p> */}
 
                         <p className='request_body_content'>
                             {currentClientRequestData.client_request_body}

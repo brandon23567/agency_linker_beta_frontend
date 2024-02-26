@@ -17,15 +17,7 @@ const CreateClientTaskPage = () => {
     const [taskDate, setTaskDate] = useState("");
     const [taskStatus, setTaskStatus] = useState("");
 
-    const getCurrentSlugs = () => {
-        const dataFromUrl = {teamUniqueLink, clientName};
-        const actualTeamLinkUrl = dataFromUrl.teamUniqueLink;
-        const actualCurrentTeamName = dataFromUrl.clientName;
-        console.log("this is your team unique link", actualTeamLinkUrl)
-        console.log("this is your current client container", actualCurrentTeamName)
-        // setCurrentTeamName(actualCurrentTeamName);
-        // setCurrentTeamUniqueLink(actualTeamLinkUrl)
-    }
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
 
     const createNewClientTask = (e) => {
         e.preventDefault();
@@ -40,7 +32,7 @@ const CreateClientTaskPage = () => {
         formData.append("currentTeamName", actualCurrentTeamName)
         formData.append("currentTeamUniqueLink", actualTeamLinkUrl)
 
-        const url = "http://localhost:8000/api/agency_side/create_new_client_task/"
+        const url = `${currentDevelopmentEnviroment}api/agency_side/create_new_client_task/`;
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -48,14 +40,14 @@ const CreateClientTaskPage = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
-            console.log(response)
+            // console.log(response)
         })
     } 
 
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -65,7 +57,6 @@ const CreateClientTaskPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
 
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;
@@ -79,7 +70,6 @@ const CreateClientTaskPage = () => {
 
     useEffect(() => {
         getCurrentAgencyUserAuthenticated();
-        getCurrentSlugs();
     }, [teamUniqueLink, clientName])
 
 

@@ -17,6 +17,9 @@ const TeamMembersPage = () => {
 
     const [teamMembers, setTeamMembers] = useState([]);
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const getCurrentTeamUniqueLink = () => {
         const currentLink = {currentTeamLink}
         const actual_current_team_link = currentLink.currentTeamLink;
@@ -28,7 +31,7 @@ const TeamMembersPage = () => {
         const actualCurrentTeamUniqueLink = currentTeamUniquLink.currentTeamLink;
 
         const currentUserToken = Cookies.get("access_token");
-        const url = `http://localhost:8000/api/agency_side/get_current_team_members_inside_team/${actualCurrentTeamUniqueLink}/`;
+        const url = `${currentDevelopmentEnviroment}api/agency_side/get_current_team_members_inside_team/${actualCurrentTeamUniqueLink}/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
 
         axios.get(url)
@@ -44,7 +47,7 @@ const TeamMembersPage = () => {
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -54,8 +57,6 @@ const TeamMembersPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
-
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;
 

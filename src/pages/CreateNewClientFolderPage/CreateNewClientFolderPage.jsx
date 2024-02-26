@@ -15,6 +15,9 @@ const CreateNewClientFolderPage = () => {
 
     const [clientFolderName, setClientFolderName] = useState("")
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const createNewClientFolder = (e) => {
         e.preventDefault();
 
@@ -23,7 +26,7 @@ const CreateNewClientFolderPage = () => {
         const actualTeamUniqueLink = dataFromUrl.teamUniqueLink;
         const actualClientName = dataFromUrl.clientName
 
-        const url = `http://localhost:8000/api/agency_side/create_new_client_folder/${actualTeamUniqueLink}/create_new_container/${actualClientName}/`
+        const url = `${currentDevelopmentEnviroment}api/agency_side/create_new_client_folder/${actualTeamUniqueLink}/create_new_container/${actualClientName}/`
         const formData = new FormData();
         formData.append("clientFolderName", clientFolderName)
         const config = {
@@ -33,14 +36,13 @@ const CreateNewClientFolderPage = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
-            console.log(response);
         })
     }
 
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -50,7 +52,6 @@ const CreateNewClientFolderPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
 
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;

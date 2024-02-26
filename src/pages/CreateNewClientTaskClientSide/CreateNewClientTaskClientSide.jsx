@@ -17,6 +17,9 @@ const CreateNewClientTaskClientSide = () => {
     const [taskDate, setTaskDate] = useState("");
     const [taskStatus, setTaskStatus] = useState("");
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const createNewClientTaskClientSide = (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -28,7 +31,7 @@ const CreateNewClientTaskClientSide = () => {
         const currentTeamLink = agency_team_link
         const currentClientContainerName = agency_client_container_name
 
-        const url = `http://localhost:8000/api/agency_client_side/create_new_client_task_client_side/${currentTeamLink}/${currentClientContainerName}/`;
+        const url = `${currentDevelopmentEnviroment}api/agency_client_side/create_new_client_task_client_side/${currentTeamLink}/${currentClientContainerName}/`;
 
         const config = {
             headers: {
@@ -37,18 +40,14 @@ const CreateNewClientTaskClientSide = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
-            console.log(response.data);
         }).catch((error) => {
             console.log(error);
         })
-
-        // console.log("Current team unique link", currentTeamLink);
-        // console.log("Current client container name", currentClientContainerName);
     }
 
     const getCurrentAuthenticatedClientUser = () => {
         const currentUserToken = Cookies.get("access_token");
-        const url = `http://localhost:8000/api/authentication/get_current_client_user/`;
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_client_user/`;
         axios.defaults.headers.common[
         "Authorization"
         ] = `Bearer ${currentUserToken}`;
@@ -60,7 +59,6 @@ const CreateNewClientTaskClientSide = () => {
         };
 
         axios.get(url, config).then((response) => {
-        console.log(response.data);
 
         const { "current user profile image": profileImageUrl } = response.data;
         const { "current user user": usersUsername } = response.data;

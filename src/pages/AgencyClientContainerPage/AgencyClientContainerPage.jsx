@@ -8,6 +8,8 @@ import { useParams } from 'react-router-dom';
 
 const AgencyClientContainerPage = () => {
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
     const { currentTeamLink, currentClientContainerName } = useParams();
 
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
@@ -27,7 +29,7 @@ const AgencyClientContainerPage = () => {
         const actualTeamUniqueLink = dataFromUrl.currentTeamLink;
         const actualClientContainerName = dataFromUrl.currentClientContainerName
 
-        const url = `http://localhost:8000/api/agency_side/get_all_tasks_inside_client_container/${actualTeamUniqueLink}/client_container/${actualClientContainerName}/`;
+        const url = `${currentDevelopmentEnviroment}api/agency_side/get_all_tasks_inside_client_container/${actualTeamUniqueLink}/client_container/${actualClientContainerName}/`;
 
         const config = {
             headers: {

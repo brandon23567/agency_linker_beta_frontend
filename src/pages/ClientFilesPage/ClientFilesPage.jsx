@@ -20,6 +20,9 @@ const ClientFilesPage = () => {
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const [clientFiles, setClientFiles] = useState([]);
 
     const getAllCurrentClientFiles = () => {
@@ -28,7 +31,7 @@ const ClientFilesPage = () => {
         const actualClientName = dataFromUrl.clientName;
         const actualClientFolderName = dataFromUrl.clientFolderName;
 
-        const url = `http://localhost:8000/api/agency_side/get_all_client_files_inside_client_container/${actualTeamUniqueLink}/client_files/${actualClientName}/${actualClientFolderName}/`;
+        const url = `${currentDevelopmentEnviroment}api/agency_side/get_all_client_files_inside_client_container/${actualTeamUniqueLink}/client_files/${actualClientName}/${actualClientFolderName}/`;
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -36,7 +39,6 @@ const ClientFilesPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
             setClientFiles(response.data);
         })
     }
@@ -62,7 +64,7 @@ const ClientFilesPage = () => {
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -72,8 +74,6 @@ const ClientFilesPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
-
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;
 

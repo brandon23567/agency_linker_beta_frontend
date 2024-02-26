@@ -15,11 +15,14 @@ const ClientTasksPageFromClientSide = () => {
 
     const {agency_team_link, agency_client_container_name} = useParams();
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const getCurrentClientsTasksMadeByClient = () => {
         const dataFromUrl = {agency_team_link, agency_client_container_name}
         const currentTeamLink = dataFromUrl.agency_team_link
         const currentClientContainerName = dataFromUrl.agency_client_container_name
-        const url = `http://localhost:8000/api/agency_client_side/get_current_clients_request_they_made/${currentTeamLink}/${currentClientContainerName}/`;
+        const url = `${currentDevelopmentEnviroment}api/agency_client_side/get_current_clients_request_they_made/${currentTeamLink}/${currentClientContainerName}/`;
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -27,7 +30,6 @@ const ClientTasksPageFromClientSide = () => {
         }
 
         axios.get(url, config).then((response) => {
-            // console.log(response.data)
             setClientTasks(response.data);
         }).catch((error) => {
             console.log(error)
@@ -36,7 +38,7 @@ const ClientTasksPageFromClientSide = () => {
 
     const getCurrentAuthenticatedClientUser = () => {
         const currentUserToken = Cookies.get("access_token");
-        const url = `http://localhost:8000/api/authentication/get_current_client_user/`;
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_client_user/`;
         axios.defaults.headers.common[
         "Authorization"
         ] = `Bearer ${currentUserToken}`;
@@ -48,7 +50,6 @@ const ClientTasksPageFromClientSide = () => {
         };
 
         axios.get(url, config).then((response) => {
-        console.log(response.data);
 
         const { "current user profile image": profileImageUrl } = response.data;
         const { "current user user": usersUsername } = response.data;

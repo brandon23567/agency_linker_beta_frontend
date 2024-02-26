@@ -14,6 +14,9 @@ const ClientRequestsPage = () => {
 
     const [clientRequests, setClientRequests] = useState([]);
 
+    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+
     const { teamUniqueLink, clientName } = useParams();
 
     const getClientRequestsInsideClientContainer = () => {
@@ -22,7 +25,7 @@ const ClientRequestsPage = () => {
         console.log("current team link", teamUniqueLink);
         console.log("current client container name", clientName);
 
-        const url = `http://localhost:8000/api/agency_side/get_all_client_requests_inside_container/${currentTeamUniqueLink}/${currentClientContainer}/`;
+        const url = `${currentDevelopmentEnviroment}api/agency_side/get_all_client_requests_inside_container/${currentTeamUniqueLink}/${currentClientContainer}/`;
         const config = {
             headers: {
                 "Content-Type": "application/json"
@@ -30,7 +33,6 @@ const ClientRequestsPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data)
             setClientRequests(response.data);
         }).catch((error) => {
             console.log(error)
@@ -41,7 +43,7 @@ const ClientRequestsPage = () => {
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -51,8 +53,6 @@ const ClientRequestsPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
-
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;
 
