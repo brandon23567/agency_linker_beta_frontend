@@ -17,7 +17,9 @@ const CreateNewClientFilePage = () => {
     const [newActualClientFile, setNewActualClientFile] = useState(null)
     const [fileExtension, setFileExtension] = useState("");
 
-    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
     const createNewClientFile = (e) => {

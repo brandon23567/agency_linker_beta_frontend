@@ -11,7 +11,9 @@ const ClientHomePage = () => {
 	const [currentUserUsername, setCurrentUserUsername] = useState("");
 	const [currentClientsAgencyTeams, setCurrentClientsAgencyTeams] = useState([]);
 
-    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+	const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
 	const getAllCurrentClientsTeamsAPartOf = () => {

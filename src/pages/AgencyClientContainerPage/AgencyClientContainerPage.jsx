@@ -8,7 +8,8 @@ import { useParams } from 'react-router-dom';
 
 const AgencyClientContainerPage = () => {
 
-    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
     const { currentTeamLink, currentClientContainerName } = useParams();
 

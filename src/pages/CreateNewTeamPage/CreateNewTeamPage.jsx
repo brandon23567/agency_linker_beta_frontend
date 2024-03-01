@@ -14,7 +14,9 @@ const CreateNewTeamPage = () => {
     const [teamAssignedClient, setTeamAssignedClient] = useState("");
     const [teamProfileImg, setTeamProfileImg] = useState(null);
 
-    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
     const CreateNewTeam = (e) => {
         e.preventDefault();

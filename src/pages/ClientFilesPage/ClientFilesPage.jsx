@@ -20,7 +20,9 @@ const ClientFilesPage = () => {
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
 
-    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
     const [clientFiles, setClientFiles] = useState([]);

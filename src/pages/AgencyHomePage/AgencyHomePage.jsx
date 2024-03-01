@@ -16,7 +16,8 @@ const AgencyHomePage = () => {
 
     const [clientContainers, setClientContainers] = useState([]);
 
-    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
     const getCurrentTeamUniqueLink = () => {
         const currentLink = {slug}

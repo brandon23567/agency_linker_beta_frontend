@@ -18,7 +18,9 @@ const CreateNewClientContainer = () => {
     const [clientEmail, setClientEmail] = useState("");
     const [clientBudget, setClientBudget] = useState("");
 
-    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
     const createNewClientContainer = (e) => {

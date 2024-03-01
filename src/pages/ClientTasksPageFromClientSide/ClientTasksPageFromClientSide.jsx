@@ -15,7 +15,9 @@ const ClientTasksPageFromClientSide = () => {
 
     const {agency_team_link, agency_client_container_name} = useParams();
 
-    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
     const getCurrentClientsTasksMadeByClient = () => {

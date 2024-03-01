@@ -10,7 +10,14 @@ const AgencySignupPage = () => {
     const [userProfileImg, setUserProfileImg] = useState(null);
     const [password, setPassword] = useState("");
 
-    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
+
+    // const testingMyPathVariable = () => {
+    //     // const currentDevelopmentEnviroment = process.env.REACT_APP_PRODUCTION_ENV;
+    //     const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV || 'https://agency-linker-beta.onrender.com/';
+
+    //     console.log("the value of your url is", `${currentDevelopmentEnviroment}`)
+    // }
     
 
     const signNewAgencyUser = (e) => {

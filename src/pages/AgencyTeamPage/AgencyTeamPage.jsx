@@ -12,7 +12,8 @@ const AgencyTeamPage = () => {
     const [currentUserUsername, setCurrentUserUsername] = useState("");
     const [currentUserTeams, setCurrentUserTeams] = useState([])
 
-    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
     const getAllTeamsCurrentUserIsAPartOf = () => {

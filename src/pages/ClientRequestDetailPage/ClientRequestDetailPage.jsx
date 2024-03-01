@@ -15,7 +15,9 @@ const ClientRequestDetailPage = () => {
 
     const { teamUniqueLink, clientName, client_request_title } = useParams();
 
-    const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+
+    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
     const getCurrentActiveClientRequest = () => {
