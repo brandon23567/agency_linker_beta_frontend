@@ -65,8 +65,12 @@ const AgencyTeamPage = () => {
             <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
-                    <SideNavbar 
+                    {/* <SideNavbar 
                         currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUsername={currentUserUsername} 
+                    /> */}
+                    <SideNavbar 
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
                     />
                 </div>
