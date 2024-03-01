@@ -5,9 +5,11 @@ import HomeIcon from "../../images/icons/home-page(1).png";
 import ClientFilesIcon from "../../images/icons/folder.png";
 import ClientRequestsIcon from "../../images/icons/customer-service.png";
 import MembersIcon from "../../images/icons/member-card.png";
-import RefreshToken from '../../components/RefreshToken/RefreshToken'
+import RefreshToken from '../../components/RefreshToken/RefreshToken';
+import { useParams } from 'react-router-dom';
 
 const SideNavbar = ({ currentUsersUserProfileImg, currentUsersUsername }) => {
+    const { teamUniqueLink, clientName } = useParams();
     return (
         <div className='main_outer_sidenavbar_container'>
             <RefreshToken />
@@ -23,15 +25,15 @@ const SideNavbar = ({ currentUsersUserProfileImg, currentUsersUsername }) => {
                     </li>
                     <li>
                         <img src={ClientFilesIcon} alt='link_icon' className='link_small_icon' />
-                        <Link to="" className='actual_link'>Client Folders</Link>
+                        <Link to={`/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/client_folders/create_new_client_folder`} className='actual_link'>Client Folders</Link>
                     </li>
                     <li>
                         <img src={ClientRequestsIcon} alt='link_icon' className='link_small_icon' />
-                        <Link to="" className='actual_link'>Client Requests</Link>
+                        <Link to={`/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/client_requests`} className='actual_link'>Client Requests</Link>
                     </li>
                     <li>
                         <img src={MembersIcon} alt='link_icon' className='link_small_icon' />
-                        <Link to="" className='actual_link'>Members</Link>
+                        <Link to={`/agency_teams/${teamUniqueLink}/agency_home/team_members`} className='actual_link'>Members</Link>
                     </li>
                 </ul>
 
