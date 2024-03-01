@@ -26,10 +26,6 @@ const ClientNavbar = ({ currentUsersUserProfileImg, currentUsersUsername }) => {
                         <img src={ClientFilesIcon} alt='link_icon' className='link_small_icon' />
                         <Link to="" className='actual_link'>Tasks</Link>
                     </li>
-                    {/* <li>
-                        <img src={ClientFilesIcon} alt='link_icon' className='link_small_icon' />
-                        <Link to="" className='actual_link'>Video Call</Link>
-                    </li> */}
                 </ul>
 
                 <div className='current_user_container'>

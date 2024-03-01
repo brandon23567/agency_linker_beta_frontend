@@ -3,10 +3,12 @@ import Cookies from 'js-cookie'
 
 const RefreshToken = () => {
 
+    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
+
     const refreshCurrentUserToken = () => {
         const currentUserRefreshToken = Cookies.get("refresh_token");
 
-        fetch("http://localhost:8000/api/authentication/refresh_token/", {
+        fetch(`${currentDevelopmentEnviroment}api/authentication/refresh_token/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
