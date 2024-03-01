@@ -20,7 +20,7 @@ const AgencySigninPage = () => {
         formData.append("username", username);
         formData.append("password", password);
 
-        const url = `${currentDevelopmentEnviroment}http://localhost:8000/api/authentication/login_agency_user/`
+        const url = `${currentDevelopmentEnviroment}api/authentication/login_agency_user/`
         const config = {
             headers: {
                 "Content-Type": "application/json"
