@@ -14,8 +14,6 @@ const CreateNewTeamPage = () => {
     const [teamAssignedClient, setTeamAssignedClient] = useState("");
     const [teamProfileImg, setTeamProfileImg] = useState(null);
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
-
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
     const CreateNewTeam = (e) => {
@@ -35,6 +33,8 @@ const CreateNewTeamPage = () => {
         formData.append("teamProfileImg", teamProfileImg)
 
         axios.post(url, formData, config).then((response) => {
+            alert("New team has been created");
+            window.location.href = "/agency_teams";
         })
     }
 
@@ -73,7 +73,7 @@ const CreateNewTeamPage = () => {
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
                     />
                 </div>

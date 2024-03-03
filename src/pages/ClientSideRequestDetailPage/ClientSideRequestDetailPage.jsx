@@ -14,8 +14,6 @@ const ClientSideRequestDetailPage = () => {
 
     const { teamUniqueLink, clientName, client_request_title } = useParams();
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
-
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
@@ -81,7 +79,7 @@ const ClientSideRequestDetailPage = () => {
             <div className='container'>
                 <div className='navbar_container'>
                     <ClientNavbar
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername}
                     />
                 </div>

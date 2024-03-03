@@ -16,13 +16,13 @@ const SelectTypePage = () => {
 
                     <ul className='navbar_container'>
                         <li>
-                            <Link to="" className='nav_link'>Home</Link>
+                            <Link to="/" className='nav_link'>Home</Link>
                         </li>
                         <li>
-                            <Link to="" className='nav_link'>Signup</Link>
+                            <Link to="/" className='nav_link'>Signup</Link>
                         </li>
                         <li>
-                            <Link to="" className='nav_link'>Signin</Link>
+                            <Link to="/" className='nav_link'>Signin</Link>
                         </li>
                     </ul>
                 </div>

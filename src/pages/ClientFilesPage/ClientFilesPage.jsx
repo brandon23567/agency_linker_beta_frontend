@@ -11,7 +11,7 @@ import TestFileIcon5 from "../../images/icons/xlsx.png";
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import RefreshToken from '../../components/RefreshToken/RefreshToken'
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 const ClientFilesPage = () => {
 
@@ -19,8 +19,6 @@ const ClientFilesPage = () => {
 
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
-
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
 
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
@@ -103,7 +101,7 @@ const ClientFilesPage = () => {
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
                     />
                 </div>
@@ -112,7 +110,9 @@ const ClientFilesPage = () => {
                     <h2>Client's Files</h2>
 
                     <div className='add_new_file_btn_container'>
-                        <button className='add_new_file_btn'>Add New File</button>
+                        <button className='add_new_file_btn'>
+                            <Link to={`/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/client_folders/client_files/${clientFolderName}/create_new_client_file`} className="new_clientfile_actual_link">Add New File</Link>
+                        </button>
                     </div>
 
                     <div className='client_files_container'>

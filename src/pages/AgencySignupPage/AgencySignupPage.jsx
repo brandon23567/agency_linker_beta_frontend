@@ -11,13 +11,6 @@ const AgencySignupPage = () => {
     const [password, setPassword] = useState("");
 
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
-
-    // const testingMyPathVariable = () => {
-    //     // const currentDevelopmentEnviroment = process.env.REACT_APP_PRODUCTION_ENV;
-    //     const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV || 'https://agency-linker-beta.onrender.com/';
-
-    //     console.log("the value of your url is", `${currentDevelopmentEnviroment}`)
-    // }
     
 
     const signNewAgencyUser = (e) => {
@@ -42,7 +35,7 @@ const AgencySignupPage = () => {
             Cookies.set("access_token", access_token)
 			Cookies.set("refresh_token", refresh_token)
 
-            console.log(response);
+            // console.log(response);
             alert("Signup was successful");
             window.location.href = "/select_types/agency_signin";
         })

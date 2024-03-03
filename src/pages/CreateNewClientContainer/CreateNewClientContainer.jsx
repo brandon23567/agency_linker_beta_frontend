@@ -18,8 +18,6 @@ const CreateNewClientContainer = () => {
     const [clientEmail, setClientEmail] = useState("");
     const [clientBudget, setClientBudget] = useState("");
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
-
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
@@ -42,6 +40,8 @@ const CreateNewClientContainer = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
+            alert("New client container has been created");
+            window.location.href = `/agency_teams/${slug}/agency_home`;
         })
         .catch((error) => {
             alert("Only team admins can create a new client container");
@@ -97,7 +97,7 @@ const CreateNewClientContainer = () => {
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
                     />
                 </div>

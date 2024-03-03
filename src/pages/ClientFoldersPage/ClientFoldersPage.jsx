@@ -85,16 +85,18 @@ const ClientFoldersPage = () => {
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
                     />
                 </div>
 
                 <div className='content_container'>
-                    <h2>Clients folders and files</h2>
+                    <h2>All of the clients folders</h2>
 
                     <div className='add_new_folder_btn_container'>
-                        <button className='add_new_folder'>Add New Folder</button>
+                        <button className='add_new_folder'>
+                            <Link to={`/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/client_folders/create_new_client_folder`} className='actual_new_client_folder_link'>Add New Folder</Link>
+                        </button>
                     </div>
 
                     <div className='client_folders_container'>

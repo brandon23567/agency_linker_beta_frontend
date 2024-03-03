@@ -29,6 +29,28 @@
     border-radius: 40px;
     cursor: pointer;
     margin-bottom: 2rem;
+    margin-right: 1.5rem;
+}
+
+.main_agency_team_page_outer_container .container .content_container .add_new_team_btn_container .join_new_team_btn{
+    padding: 18px 2rem;
+    background: none;
+    border: none;
+    color: #fff;
+    background-color: blue;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.main_agency_team_page_outer_container .container .content_container .add_new_team_btn_container .add_new_team_btn .actual_link{
+    text-decoration: none;
+    color: #fff;
+}
+
+.main_agency_team_page_outer_container .container .content_container .add_new_team_btn_container .join_new_team_btn .actual_link{
+    text-decoration: none;
+    color: #fff;
 }
 
 .main_agency_team_page_outer_container .container .content_container .users_teams_container{

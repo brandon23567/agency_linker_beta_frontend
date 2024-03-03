@@ -30,6 +30,11 @@
     padding: 20px;
 }
 
+.main_outer_client_container_inside_agency_page .container .content_container .add_new_client_objective_container .add_new_client_objective .actual_add_task_link_btn{
+    color: #fff;
+    text-decoration: none;
+}
+
 .main_outer_client_container_inside_agency_page .container .content_container .objectives_outer_container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

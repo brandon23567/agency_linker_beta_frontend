@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-/* .client_folders_main_outer_container .container{
-    background-color: #f4f8ff;
-    height: 100%;
-} */
-
 .client_folders_main_outer_container .container .content_container{
     margin-left: 270px;
     margin-right: 15px;
@@ -28,6 +23,11 @@
     color: #fff;
     border-radius: 40px;
     padding: 17px 2rem;
+}
+
+.client_folders_main_outer_container .container .content_container .add_new_folder_btn_container .add_new_folder .actual_new_client_folder_link{
+    text-decoration: none;
+    color: #fff;
 }
 
 .client_folders_main_outer_container .container .content_container .client_folders_container{

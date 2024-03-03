@@ -15,8 +15,6 @@ const CreateNewClientFolderPage = () => {
 
     const [clientFolderName, setClientFolderName] = useState("")
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
-
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
@@ -38,6 +36,8 @@ const CreateNewClientFolderPage = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
+            alert("New client folder has been created")
+            window.location.href = `/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/client_folders`
         })
     }
 
@@ -77,7 +77,7 @@ const CreateNewClientFolderPage = () => {
                 <div className='navbar_container'>
 
                     <SideNavbar 
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
                     />
                 

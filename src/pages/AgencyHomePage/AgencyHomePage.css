@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-/* .agency_homepage_outer_main_container .container{
-    background-color: #f4f8ff;
-    height: 100vh;
-} */
-
 .agency_homepage_outer_main_container .container .main_content_container{
     margin-left: 270px;
     margin-right: 15px;
@@ -29,6 +24,11 @@
     color: #fff;
 }
 
+.agency_homepage_outer_main_container .container .main_content_container .add_client_container_btn_container .add_client_container_btn .actual_new_client_container_link{
+    text-decoration: none;
+    color: #fff;
+}
+
 .agency_homepage_outer_main_container .container .main_content_container .client_containers_container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -40,7 +40,7 @@
 .agency_homepage_outer_main_container .container .main_content_container .client_containers_container .single_client .actual_container_link{
     display: flex;
     flex-direction: column;
-    padding: 12px;
+    padding: 25px;
     border: 1px solid rgb(212, 212, 212);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;

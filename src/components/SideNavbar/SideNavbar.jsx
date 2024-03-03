@@ -8,8 +8,8 @@ import MembersIcon from "../../images/icons/member-card.png";
 import RefreshToken from '../../components/RefreshToken/RefreshToken';
 import { useParams } from 'react-router-dom';
 
-const SideNavbar = ({ currentUsersUserProfileImg, currentUsersUsername }) => {
-    const { teamUniqueLink, clientName } = useParams();
+const SideNavbar = ({ currentUsersUserProfileImg, currentUsersUsername, teamUniqueLink, clientName  }) => {
+    // const { teamUniqueLink, clientName } = useParams();
     return (
         <div className='main_outer_sidenavbar_container'>
             <RefreshToken />
@@ -25,7 +25,7 @@ const SideNavbar = ({ currentUsersUserProfileImg, currentUsersUsername }) => {
                     </li>
                     <li>
                         <img src={ClientFilesIcon} alt='link_icon' className='link_small_icon' />
-                        <Link to={`/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/client_folders/create_new_client_folder`} className='actual_link'>Client Folders</Link>
+                        <Link to={`/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/client_folders`} className='actual_link'>Client Folders</Link>
                     </li>
                     <li>
                         <img src={ClientRequestsIcon} alt='link_icon' className='link_small_icon' />

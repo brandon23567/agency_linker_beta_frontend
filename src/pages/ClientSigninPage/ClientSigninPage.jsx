@@ -9,8 +9,6 @@ const ClientSigninPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
-
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 

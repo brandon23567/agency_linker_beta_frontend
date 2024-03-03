@@ -1,6 +1,5 @@
 import React from 'react'
 import "./AgencyTeamChatPage.css"
-import SmallerChatSideNavbar from '../../components/SmallerChatSideNavbar/SmallerChatSideNavbar';
 import ProfileImage1 from "../../images/test_imgs/1 (1).jpg"
 import { Link } from 'react-router-dom';
 
@@ -9,7 +8,7 @@ const AgencyTeamChatPage = () => {
         <div className='main_team_chat_page_outer_container'>
             <div className='container'>
                 <div className='smaller_side_navbar_container'>
-                    <SmallerChatSideNavbar />
+                    <h1>Navbar will be here</h1>
                 </div>
                 <div className='current_team_members_container'>
                     <div className='search_input_container'>

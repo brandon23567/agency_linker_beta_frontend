@@ -16,15 +16,15 @@ const ClientNavbar = ({ currentUsersUserProfileImg, currentUsersUsername }) => {
                 <ul className='actual_navbar'>
                     <li>
                         <img src={HomeIcon} alt='link_icon' className='link_small_icon' />
-                        <Link to="/agency_teams" className='actual_link'>Home</Link>
+                        <Link to="/client_side/agency_client_home" className='actual_link'>Home</Link>
                     </li>
                     <li>
                         <img src={ClientRequestsIcon} alt='link_icon' className='link_small_icon' />
-                        <Link to="" className='actual_link'>Make Request</Link>
+                        <Link to="/client_side/agency_client_home" className='actual_link'>Make Request</Link>
                     </li>
                     <li>
                         <img src={ClientFilesIcon} alt='link_icon' className='link_small_icon' />
-                        <Link to="" className='actual_link'>Tasks</Link>
+                        <Link to="/client_side/agency_client_home" className='actual_link'>Tasks</Link>
                     </li>
                 </ul>
 

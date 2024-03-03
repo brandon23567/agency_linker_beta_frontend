@@ -16,7 +16,6 @@ const AgencyHomePage = () => {
 
     const [clientContainers, setClientContainers] = useState([]);
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
     const getCurrentTeamUniqueLink = () => {
@@ -74,7 +73,6 @@ const AgencyHomePage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
 
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;
@@ -99,7 +97,7 @@ const AgencyHomePage = () => {
             <div className='container'>
                 <div className='sidenavbar_container'>
                     <SideNavbar 
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
                     />
                 </div>
@@ -107,7 +105,9 @@ const AgencyHomePage = () => {
                     <h1>Client Containers</h1>
 
                     <div className='add_client_container_btn_container'>
-                        <button className='add_client_container_btn'>Add new client</button>
+                        <button className='add_client_container_btn'>
+                            <Link to={`/agency_teams/${slug}/agency_home/create_new_client_container`} className='actual_new_client_container_link'>Add new client container</Link>
+                        </button>
                     </div>
 
                     <div className='client_containers_container'>

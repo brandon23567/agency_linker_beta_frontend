@@ -160,6 +160,7 @@ root.render(
 	<React.StrictMode>
     	<RouterProvider router={router}>
 			<SpeedInsights />
+			<SideNavbar />
 		</RouterProvider>
   	</React.StrictMode>
 );

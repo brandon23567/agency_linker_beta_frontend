@@ -17,8 +17,6 @@ const CreateNewClientFilePage = () => {
     const [newActualClientFile, setNewActualClientFile] = useState(null)
     const [fileExtension, setFileExtension] = useState("");
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
-
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
@@ -89,7 +87,7 @@ const CreateNewClientFilePage = () => {
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
                     />
                 </div>

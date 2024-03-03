@@ -15,7 +15,6 @@ const ClientTasksPageFromClientSide = () => {
 
     const {agency_team_link, agency_client_container_name} = useParams();
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
 
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
@@ -41,23 +40,21 @@ const ClientTasksPageFromClientSide = () => {
     const getCurrentAuthenticatedClientUser = () => {
         const currentUserToken = Cookies.get("access_token");
         const url = `${currentDevelopmentEnviroment}api/authentication/get_current_client_user/`;
-        axios.defaults.headers.common[
-        "Authorization"
-        ] = `Bearer ${currentUserToken}`;
+        axios.defaults.headers.common["Authorization"] = `Bearer ${currentUserToken}`;
         const config = {
-        headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${currentUserToken}`,
-        },
+            headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${currentUserToken}`,
+            },
         };
 
         axios.get(url, config).then((response) => {
 
-        const { "current user profile image": profileImageUrl } = response.data;
-        const { "current user user": usersUsername } = response.data;
+            const { "current user profile image": profileImageUrl } = response.data;
+            const { "current user user": usersUsername } = response.data;
 
-        setCurrentUserProfileImg(profileImageUrl);
-        setCurrentUserUsername(usersUsername);
+            setCurrentUserProfileImg(profileImageUrl);
+            setCurrentUserUsername(usersUsername);
         });
     };
 
@@ -72,7 +69,7 @@ const ClientTasksPageFromClientSide = () => {
             <div className='container'>
                 <div className='navbar_container'>
                     <ClientNavbar
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername}
                     />
                 </div>

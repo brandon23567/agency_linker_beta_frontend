@@ -33,7 +33,7 @@ const ClientHomePage = () => {
 		axios
 		.get(url, config)
 		.then((response) => {
-			console.log(response.data);
+			// console.log(response.data);
 			setCurrentClientsAgencyTeams(response.data);
 		})
 		.catch((error) => {
@@ -53,13 +53,13 @@ const ClientHomePage = () => {
 		};
 
 		axios.get(url, config).then((response) => {
-		console.log(response.data);
+			// console.log(response.data);
 
-		const { "current user profile image": profileImageUrl } = response.data;
-		const { "current user user": usersUsername } = response.data;
+			const { "current user profile image": profileImageUrl } = response.data;
+			const { "current user user": usersUsername } = response.data;
 
-		setCurrentUserProfileImg(profileImageUrl);
-		setCurrentUserUsername(usersUsername);
+			setCurrentUserProfileImg(profileImageUrl);
+			setCurrentUserUsername(usersUsername);
 		});
   	};
 
@@ -74,7 +74,7 @@ const ClientHomePage = () => {
 		<div className="container">
 			<div className="navbar_container">
 				<ClientNavbar
-					currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+					currentUsersUserProfileImg={`${currentUserProfileImg}`}
 					currentUsersUsername={currentUserUsername}
 				/>
 			</div>

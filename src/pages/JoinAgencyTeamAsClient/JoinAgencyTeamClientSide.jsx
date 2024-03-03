@@ -12,8 +12,6 @@ const JoinAgencyTeamClientSide = () => {
     const [teamUniqueLink, setTeamUniqueLink] = useState("")
     const [currentClientContainerName, setCurrentCloientContainerName] = useState("")
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
-
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
@@ -72,7 +70,7 @@ const JoinAgencyTeamClientSide = () => {
             <div className='container'>
                 <div className='navbar_container'>
                     <ClientNavbar 
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
                     />
                 </div>

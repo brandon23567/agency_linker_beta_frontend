@@ -65,10 +65,6 @@ const AgencyTeamPage = () => {
             <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
-                    {/* <SideNavbar 
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
-                        currentUsersUsername={currentUserUsername} 
-                    /> */}
                     <SideNavbar 
                         currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
@@ -79,7 +75,13 @@ const AgencyTeamPage = () => {
                     <h2>All the teams you are a part of</h2>
 
                     <div className='add_new_team_btn_container'>
-                        <button className='add_new_team_btn'>Add New Team</button>
+                        <button className='add_new_team_btn'>
+                            <Link to={`/agency_teams/create_new_team`} className='actual_link'>Add New Team</Link>
+                        </button>
+
+                        <button className='join_new_team_btn'>
+                            <Link to={`/agency_teams/join_team`} className='actual_link'>join New Team</Link>
+                        </button>
                     </div>
 
                     <div className='users_teams_container'>

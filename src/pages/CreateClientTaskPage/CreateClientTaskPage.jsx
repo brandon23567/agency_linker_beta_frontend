@@ -17,8 +17,6 @@ const CreateClientTaskPage = () => {
     const [taskDate, setTaskDate] = useState("");
     const [taskStatus, setTaskStatus] = useState("");
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
-
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
     const createNewClientTask = (e) => {
@@ -42,7 +40,8 @@ const CreateClientTaskPage = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
-            // console.log(response)
+            alert("New client task has been created");
+            window.location.href = `/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}`;
         })
     } 
 
@@ -81,7 +80,7 @@ const CreateClientTaskPage = () => {
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
                     />
                 </div>

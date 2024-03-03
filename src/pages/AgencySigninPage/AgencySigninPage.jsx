@@ -30,10 +30,8 @@ const AgencySigninPage = () => {
         axios.post(url, formData, config).then((response) => {
             console.log(response.data);
             const { access_token, refresh_token } = response.data;
-
-            console.log("your access token", access_token);
-            console.log("your refresh token", refresh_token);
-
+            // console.log("your access token", access_token);
+            // console.log("your refresh token", refresh_token);
             Cookies.set("access_token", access_token)
 			Cookies.set("refresh_token", refresh_token)
 

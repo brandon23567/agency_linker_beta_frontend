@@ -4,11 +4,9 @@ import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import RefreshToken from '../../components/RefreshToken/RefreshToken'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const AgencyClientContainerPage = () => {
-
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
     const { currentTeamLink, currentClientContainerName } = useParams();
@@ -39,7 +37,7 @@ const AgencyClientContainerPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data.tasks);
+            // console.log(response.data.tasks);
             setTasks(response.data.tasks);
         })
         .catch((error) => {
@@ -51,7 +49,7 @@ const AgencyClientContainerPage = () => {
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = "http://localhost:8000/api/authentication/get_current_agency_user/"
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`;
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
@@ -62,7 +60,6 @@ const AgencyClientContainerPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
 
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;
@@ -80,8 +77,10 @@ const AgencyClientContainerPage = () => {
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 
-                        currentUsersUserProfileImg={`http://localhost:8000/${currentUserProfileImg}`}
+                        currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
+                        teamUniqueLink={currentTeamLink}
+                        clientName={currentClientContainerName}
                     />
                 </div>
 
@@ -90,7 +89,9 @@ const AgencyClientContainerPage = () => {
                     <p>These are all the tasks and objectives that need to be completed for this client</p>
 
                     <div className='add_new_client_objective_container'>
-                        <button className='add_new_client_objective'>Add New Objective</button>
+                        <button className='add_new_client_objective'>
+                            <Link to={`/agency_teams/agency_home/${currentTeamLink}/agency_home/${currentClientContainerName}/create_new_client_task`} className='actual_add_task_link_btn'>Add New Objective</Link>
+                        </button>
                     </div>
 
                     <div className='objectives_outer_container'>
