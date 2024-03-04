@@ -40,6 +40,7 @@ const CreateNewClientFilePage = () => {
         formData.append("fileExtension", fileExtension);
 
         axios.post(url, formData, config).then((response) => {
+            alert("New file has been created");
         })
     }
 
