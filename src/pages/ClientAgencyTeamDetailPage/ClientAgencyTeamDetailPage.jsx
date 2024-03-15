@@ -15,8 +15,6 @@ const ClientAgencyTeamDetailPage = () => {
 
     const [requests, setRequests] = useState([]);
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
-
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 

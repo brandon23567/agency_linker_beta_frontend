@@ -103,6 +103,8 @@ const ClientFilesPage = () => {
                     <SideNavbar 
                         currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
+                        teamUniqueLink={teamUniqueLink}
+                        clientName={clientName}
                     />
                 </div>
 

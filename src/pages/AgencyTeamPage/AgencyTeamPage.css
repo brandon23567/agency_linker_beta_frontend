@@ -7,7 +7,6 @@
 
 /* .main_agency_team_page_outer_container .container{
     background-color: #f4f8ff;
-    height: 100vh;
 
 } */
 
@@ -60,9 +59,9 @@
 }
 
 .main_agency_team_page_outer_container .container .content_container .users_teams_container .single_team{
-    /* border: 1px solid rgb(212, 212, 212); */
+    border: 2px solid rgb(212, 212, 212);
     padding: 15px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
     cursor: pointer;
     background-color: #fff;
 }
@@ -79,7 +78,7 @@
 
 .main_agency_team_page_outer_container .container .content_container .users_teams_container .single_team:hover{
     transition: all 0.3s ease-in-out;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .main_agency_team_page_outer_container .container .content_container .users_teams_container .single_team p{

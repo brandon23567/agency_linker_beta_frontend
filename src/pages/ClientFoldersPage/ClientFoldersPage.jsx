@@ -14,7 +14,7 @@ const ClientFoldersPage = () => {
 
     const { teamUniqueLink, clientName } = useParams();
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
+    // const { currentTeamLink, currentClientContainerName } = useParams();
 
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
@@ -87,6 +87,8 @@ const ClientFoldersPage = () => {
                     <SideNavbar 
                         currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
+                        teamUniqueLink={teamUniqueLink}
+                        clientName={clientName}
                     />
                 </div>
 

@@ -11,8 +11,6 @@ const ClientHomePage = () => {
 	const [currentUserUsername, setCurrentUserUsername] = useState("");
 	const [currentClientsAgencyTeams, setCurrentClientsAgencyTeams] = useState([]);
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
-
 	const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
@@ -53,7 +51,6 @@ const ClientHomePage = () => {
 		};
 
 		axios.get(url, config).then((response) => {
-			// console.log(response.data);
 
 			const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;

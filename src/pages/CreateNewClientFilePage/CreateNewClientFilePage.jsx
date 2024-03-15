@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import "./CreateNewClientFilePage.css"
 import SideNavbar from '../../components/SideNavbar/SideNavbar'
-
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import RefreshToken from '../../components/RefreshToken/RefreshToken'
 import { useParams } from 'react-router-dom';
+
 
 const CreateNewClientFilePage = () => {
     const { teamUniqueLink, clientName, clientFolderName } = useParams();
@@ -18,15 +18,16 @@ const CreateNewClientFilePage = () => {
     const [fileExtension, setFileExtension] = useState("");
 
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
+    const currentDevelopmentEnviromentForUpload = "http://localhost:8000/api/agency_side/";
 
 
-    const createNewClientFile = (e) => {
+    const createNewClientFile = async (e) => {
         e.preventDefault();
         const dataFromUrl = { teamUniqueLink, clientName, clientFolderName }
         const actualTeamUniqueLink = dataFromUrl.teamUniqueLink
         const actualClientName = dataFromUrl.clientName;
         const actualClientFolderName = dataFromUrl.clientFolderName;
-        const url = `${currentDevelopmentEnviroment}api/agency_side/create_new_client_file/${actualTeamUniqueLink}/create_client_file/${actualClientName}/${actualClientFolderName}/`
+        const url = `${currentDevelopmentEnviromentForUpload}create_new_client_file/${actualTeamUniqueLink}/create_client_file/${actualClientName}/${actualClientFolderName}/`
 
         const config = {
             headers: {
@@ -90,6 +91,8 @@ const CreateNewClientFilePage = () => {
                     <SideNavbar 
                         currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
+                        teamUniqueLink={teamUniqueLink}
+                        clientName={clientName}
                     />
                 </div>
 
@@ -102,7 +105,7 @@ const CreateNewClientFilePage = () => {
                         </div>
 
                         <div className='single_input'>
-                            <input type='file' onChange={handleFileChange} />
+                            <input type='file' id='uploader' onChange={handleFileChange} />
                         </div>
 
                         <div className='add_new_client_file_btn_container'>

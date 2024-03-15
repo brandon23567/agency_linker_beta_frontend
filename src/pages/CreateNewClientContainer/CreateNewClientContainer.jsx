@@ -99,6 +99,8 @@ const CreateNewClientContainer = () => {
                     <SideNavbar 
                         currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername} 
+                        teamUniqueLink={slug}
+                        clientName={clientName}
                     />
                 </div>
 
