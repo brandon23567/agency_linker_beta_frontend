@@ -22,7 +22,7 @@
     background-color: green;
     color: #fff;
     border-radius: 40px;
-    padding: 22px 2rem;
+    padding: 19px 2rem;
 }
 
 .client_folders_main_outer_container .container .content_container .add_new_folder_btn_container .add_new_folder .actual_new_client_folder_link{
@@ -40,7 +40,7 @@
     display: flex;
     align-items: center;
     padding: 18px;
-    border: 2px solid rgb(212, 212, 212);
+    border: 1px solid rgb(212, 212, 212);
     border-radius: 25px;
     background-color: #Fff;
 }
@@ -68,5 +68,14 @@
 
 .client_folders_main_outer_container .container .content_container .client_folders_container .single_folder .single_folder_rightside .folder_name .actual_folder_name{
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.client_folders_main_outer_container .container .content_container .client_folders_container .single_folder .single_folder_rightside .folder_name .user_who_uploaded{
+    font-weight: 300;
+}
+
+.client_folders_main_outer_container .container .content_container .client_folders_container .single_folder .single_folder_rightside .folder_name .date_when_folder_created{
+    font-weight: 300;
 }
