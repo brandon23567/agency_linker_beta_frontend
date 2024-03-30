@@ -33,7 +33,6 @@ const ClientRequestDetailPage = () => {
         axios.get(url, config).then((response) => {
             setCurrentClientRequestData(response.data);
         }).catch((error) => {
-            console.log(error)
         })
     }
 

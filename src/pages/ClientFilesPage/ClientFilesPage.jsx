@@ -26,7 +26,7 @@ const ClientFilesPage = () => {
     const handleFileDownload = (fileUrl) => {
         const link = document.createElement('a');
         link.href = fileUrl;
-        link.setAttribute('download', ''); // Set download attribute to force download
+        link.setAttribute('download', ''); 
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -50,11 +50,9 @@ const ClientFilesPage = () => {
 
         axios.get(url, config).then((response) => {
             setClientFiles(response.data);
-            console.log(response.data)
         })
         .catch((error) => {
-            // console.log(error);
-            console.log("There are no client files for this client container")
+            
         })
     }
 

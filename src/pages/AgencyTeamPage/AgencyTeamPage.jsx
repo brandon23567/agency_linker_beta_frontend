@@ -12,7 +12,6 @@ const AgencyTeamPage = () => {
     const [currentUserUsername, setCurrentUserUsername] = useState("");
     const [currentUserTeams, setCurrentUserTeams] = useState([])
 
-    // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
     const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
 
 
@@ -25,7 +24,6 @@ const AgencyTeamPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data.user_teams)
             setCurrentUserTeams(response.data.user_teams);
         })
     }
@@ -43,7 +41,6 @@ const AgencyTeamPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data);
 
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;

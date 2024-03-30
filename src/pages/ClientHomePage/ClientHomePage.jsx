@@ -31,11 +31,9 @@ const ClientHomePage = () => {
 		axios
 		.get(url, config)
 		.then((response) => {
-			// console.log(response.data);
 			setCurrentClientsAgencyTeams(response.data);
 		})
 		.catch((error) => {
-			console.log(error);
 		});
 	};
 

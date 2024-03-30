@@ -37,12 +37,11 @@ const AgencyClientContainerPage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            // console.log(response.data.tasks);
             setTasks(response.data.tasks);
         })
         .catch((error) => {
             alert("No tasks inside client container");
-            console.log(error);
+            // console.log(error);
         })
     }
 

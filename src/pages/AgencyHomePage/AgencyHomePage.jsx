@@ -56,7 +56,7 @@ const AgencyHomePage = () => {
         }
 
         axios.get(url, config).then((response) => {
-            console.log(response.data)
+            // console.log(response.data)
         })
     }
 

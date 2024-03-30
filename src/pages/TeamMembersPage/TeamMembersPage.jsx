@@ -36,7 +36,6 @@ const TeamMembersPage = () => {
 
         axios.get(url)
             .then(response => {
-                console.log(response.data);
                 setTeamMembers(response.data.team_members);
             })
             .catch(error => {

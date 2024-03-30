@@ -34,8 +34,6 @@ const AgencySignupPage = () => {
 
             Cookies.set("access_token", access_token)
 			Cookies.set("refresh_token", refresh_token)
-
-            // console.log(response);
             alert("Signup was successful");
             window.location.href = "/select_types/agency_signin";
         })

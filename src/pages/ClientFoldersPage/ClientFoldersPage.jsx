@@ -14,8 +14,6 @@ const ClientFoldersPage = () => {
 
     const { teamUniqueLink, clientName } = useParams();
 
-    // const { currentTeamLink, currentClientContainerName } = useParams();
-
     const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
 
 

@@ -17,8 +17,6 @@ const RefreshToken = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-            // console.log(data)
-
             const newAccessToken = data.access
 			Cookies.set("access_token", newAccessToken)
         })
