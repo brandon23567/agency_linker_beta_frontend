@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "./TeamMembersPage.css"
 import SideNavbar from '../../components/SideNavbar/SideNavbar'
-import ProfileImage1 from "../../images/test_imgs/1 (1).jpg"
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import RefreshToken from '../../components/RefreshToken/RefreshToken'
@@ -19,6 +18,8 @@ const TeamMembersPage = () => {
 
     const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
 
+    const testDevEnviroment = "http://localhost:8000/";
+
 
     const getCurrentTeamUniqueLink = () => {
         const currentLink = {currentTeamLink}
@@ -31,12 +32,13 @@ const TeamMembersPage = () => {
         const actualCurrentTeamUniqueLink = currentTeamUniquLink.currentTeamLink;
 
         const currentUserToken = Cookies.get("access_token");
-        const url = `${currentDevelopmentEnviroment}api/agency_side/get_current_team_members_inside_team/${actualCurrentTeamUniqueLink}/`;
+        const url = `${testDevEnviroment}api/agency_side/get_current_team_members_inside_team/${actualCurrentTeamUniqueLink}/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
 
         axios.get(url)
             .then(response => {
                 setTeamMembers(response.data.team_members);
+                console.log(response.data)
             })
             .catch(error => {
                 console.error("Error fetching team members:", error);
@@ -94,35 +96,16 @@ const TeamMembersPage = () => {
                         {teamMembers.map(member => (
                             <div className='single_member' key={member.username}>
                                 <div className='single_member_top_part'>
-                                    <img src={member.profile_image_url} alt='user_profile_img' className='user_profile_img' />
+                                    <img src={member.profile_img} alt='user_profile_img' className='user_profile_img' />
                                 </div>
                                 <div className='single_member_bottom_part'>
                                     <h3>
                                         <Link to="#" className='user_username'>@{member.username}</Link>
                                     </h3>
-                                    <p>
-                                        Role: {member.role}
-                                    </p>
                                 </div>
                             </div>
                         ))}
                     </div>
-
-                    {/* <div className='team_members_container'>
-                        <div className='single_member'>
-                            <div className='single_member_top_part'>
-                                <img src={ProfileImage1} alt='user_profile_img' className='user_profile_img' />
-                            </div>
-                            <div className='single_member_bottom_part'>
-                                <h3>
-                                    <Link to="" className='user_username'>@Username</Link>
-                                </h3>
-                                <p>
-                                    Role: Software developer
-                                </p>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </div>
