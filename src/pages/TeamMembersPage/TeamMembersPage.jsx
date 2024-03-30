@@ -32,7 +32,7 @@ const TeamMembersPage = () => {
         const actualCurrentTeamUniqueLink = currentTeamUniquLink.currentTeamLink;
 
         const currentUserToken = Cookies.get("access_token");
-        const url = `${testDevEnviroment}api/agency_side/get_current_team_members_inside_team/${actualCurrentTeamUniqueLink}/`;
+        const url = `${currentDevelopmentEnviroment}api/agency_side/get_current_team_members_inside_team/${actualCurrentTeamUniqueLink}/`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
 
         axios.get(url)
