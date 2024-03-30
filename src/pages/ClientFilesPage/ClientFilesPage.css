@@ -58,6 +58,7 @@
 
 .main_client_files_outer_container .container .content_container .client_files_container .client_single_file .file_right_side h3{
     margin-bottom: 7px;
+    font-weight: 400;
 }
 
 .main_client_files_outer_container .container .content_container .client_files_container .client_single_file .file_right_side .user_who_uploaded{

@@ -2,83 +2,301 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-.main_outer_landingpage_container .top_navbar_container{
+.maian_outer_landing_page_container .top_navbar_container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
     border-bottom: 1px solid rgb(212, 212, 212);
 }
 
-.main_outer_landingpage_container .top_navbar_container .logo_container h2{
+.maian_outer_landing_page_container .top_navbar_container .logo_container .nav_logo_link{
+    text-decoration: none;
     color: blue;
+}
+
+.maian_outer_landing_page_container .top_navbar_container .logo_container .nav_logo_link h2{
+    font-size: 2rem;
+    font-weight: 400;
     cursor: pointer;
 }
 
-.main_outer_landingpage_container .top_navbar_container .navbar{
+.maian_outer_landing_page_container .top_navbar_container .actual_top_navbar{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.main_outer_landingpage_container .top_navbar_container .navbar li{
+.maian_outer_landing_page_container .top_navbar_container .actual_top_navbar li{
     list-style: none;
     margin: 0px 1rem;
 }
 
-.main_outer_landingpage_container .top_navbar_container .navbar li .actual_link{
-    list-style: none;
-    color: #000;
+.maian_outer_landing_page_container .top_navbar_container .actual_top_navbar li .actual_nav_link{
     text-decoration: none;
+    color: #000;
     font-weight: 300;
-    font-size: 17px;
 }
 
-.main_outer_landingpage_container .main_hero_main_outer_container{
+.maian_outer_landing_page_container .top_navbar_container .actual_top_navbar li .actual_nav_link:hover{
+    color: blue;
+    transition: all 0.3s ease-in-out;
+}
+
+.main_landing_hero_outer_container{
+    background-color: #f3f5f9;
     width: 100%;
     height: 100vh;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,111,1) 45%, rgba(0,212,255,1) 100%);
-
 }
 
-.main_outer_landingpage_container .main_hero_main_outer_container .hero_content_container{
+.main_landing_hero_outer_container .hero_container{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.main_outer_landingpage_container .main_hero_main_outer_container .hero_content_container h2{
-    text-align: center;
-    font-size: 3.5rem;
-    color: #fff;
-    margin-top: 5.5rem;
+.main_landing_hero_outer_container .hero_container h2{
+    margin-top: 5rem;
+    /* margin-bottom: 1rem; */
+    font-weight: 400;
 }
 
-.main_outer_landingpage_container .main_hero_main_outer_container .hero_content_container p{
-    max-width: 950px;
-    margin: 0 auto;
-    margin-top: 2.5rem;
-    line-height: 35px;
-    color: #fff;
-    font-size: 17px;
-    font-weight: 400;
+.main_landing_hero_outer_container .hero_container h1{
+    font-size: 5rem;
     margin-bottom: 1rem;
 }
 
-.main_outer_landingpage_container .main_hero_main_outer_container .hero_content_container button{
-    margin-top: 2.5rem;
-    padding: 19px 2rem;
-    border: none;
-    background-color: none;
-    border-radius: 40px;
-    background-color: blueviolet;
+.main_landing_hero_outer_container .hero_container h1 span{
+    color: blue;
 }
 
-.main_outer_landingpage_container .main_hero_main_outer_container .hero_content_container button .actual_link_btn{
+.main_landing_hero_outer_container .hero_container p{
+    text-align: center;
+    max-width: 1000px;
+    line-height: 35px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+.main_landing_hero_outer_container .hero_container .cta_btns_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_landing_hero_outer_container .hero_container .cta_btns_container .cta_btn{
+    margin-right: 1.5rem;
+}
+
+.main_landing_hero_outer_container .hero_container .cta_btns_container .cta_btn .actual_btn_link{
+    text-decoration: none;
+    color: #fff;
+}
+
+.main_landing_hero_outer_container .hero_container .cta_btns_container .signup_btn{
+    padding: 18px 3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: green;
+    color: #fff;
+    border-radius: 40px;
+}
+
+.main_landing_hero_outer_container .hero_container .cta_btns_container .demo_vid_btn{
+    padding: 18px 3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: blue;
+    color: #fff;
+    border-radius: 40px;
+}
+
+
+.main_about_us_outer_container{
+    margin-top: 1rem;
+    width: 100%;
+    height: 100vh;
+}
+
+.main_about_us_outer_container .about_us_container{
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    gap: 20px;
+    margin: 25px;
+    margin-top: 10rem;
+}
+
+.main_about_us_outer_container .about_us_container .about_us_leftside h2{
+    margin-bottom: 1.2rem;
+}
+
+.main_about_us_outer_container .about_us_container .about_us_leftside h2 span{
+    color: blue;
+}
+
+.main_about_us_outer_container .about_us_container .about_us_leftside .subtext_of_heading{
+    font-weight: 300;
+    margin-bottom: 25px;
+    line-height: 30px;
+}
+
+.main_about_us_outer_container .about_us_container .about_us_leftside .actual_about_us_text{
+    font-weight: 400;
+    margin-bottom: 30px;
+    line-height: 35px;
+}
+
+.main_about_us_outer_container .about_us_container .about_us_leftside .join_about_us_btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: blue;
+    border-radius: 40px;
+    padding: 18px 2.5rem;
+}
+
+.main_about_us_outer_container .about_us_container .about_us_rightside .about_us_image{
+    width: 100%;
+    height: auto;
+}
+
+.features_main_outer_container{
+    height: 100vh;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.features_main_outer_container h2{
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+}
+
+.features_main_outer_container h2 span{
+    color: blue;
+}
+
+.features_main_outer_container .features_container{
+    max-width: 880px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.features_main_outer_container .features_container .single_feature{
+    border: 1px solid rgb(212, 212, 212);
+    padding: 15px;
+    cursor: pointer;
+}
+
+.features_main_outer_container .features_container .single_feature .single_feature_icon_img_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.features_main_outer_container .features_container .single_feature .single_feature_icon_img_container .icon_img{
+    width: 60px;
+    height: 60px;
+}
+
+.features_main_outer_container .features_container .single_feature h3{
+    text-align: center;
+    font-weight: 300;
+}
+
+.features_main_outer_container .features_container .single_feature:hover{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.join_us_main_outer_container{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.join_us_main_outer_container .join_us_container{
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.join_us_main_outer_container .join_us_container h2{
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.join_us_main_outer_container .join_us_container .signup_email_newsletter_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.join_us_main_outer_container .join_us_container .signup_email_newsletter_container input{
+    padding: 20px 1rem;
+    border: 1px solid rgb(212, 212, 212);
+    width: 600px;
+    margin-right: 15px;
+    border-radius: 30px;
+}
+
+.join_us_main_outer_container .join_us_container .signup_email_newsletter_container .join_letter_btn{
+    border: none;
+    background: none;
+    border-radius: 30px;
+    padding: 18px 3rem;
+    cursor: pointer;
+    background-color: blue;
+    color: #fff;
+}
+
+.main_outer_footer_container .footer_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 20px;
+}
+
+.main_outer_footer_container .footer_container .footer_leftside h2{
+    color: #fff;
+}
+
+
+.main_outer_footer_container .footer_container .footer_rightside{
+    color: #fff;
+}
+
+.main_outer_footer_container .footer_container .footer_rightside .footer_nav_links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main_outer_footer_container .footer_container .footer_rightside .footer_nav_links li{
+    list-style: none;
+    margin: 10px 0px;
+}
+
+.main_outer_footer_container .footer_container .footer_rightside .footer_nav_links li .actual_footer_link{
     text-decoration: none;
     color: #fff;
 }

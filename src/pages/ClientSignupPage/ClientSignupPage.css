@@ -21,6 +21,7 @@
 .main_outer_agency_signup_container .container .top_navbar_container .logo_container h2{
     font-size: 1.6rem;
     cursor: pointer;
+    color: blue;
 }
 
 .main_outer_agency_signup_container .container .top_navbar_container .navbar{

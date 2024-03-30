@@ -23,6 +23,16 @@ const ClientFilesPage = () => {
     const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
 
 
+    const handleFileDownload = (fileUrl) => {
+        const link = document.createElement('a');
+        link.href = fileUrl;
+        link.setAttribute('download', ''); // Set download attribute to force download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+
     const [clientFiles, setClientFiles] = useState([]);
 
     const getAllCurrentClientFiles = () => {
@@ -40,6 +50,11 @@ const ClientFilesPage = () => {
 
         axios.get(url, config).then((response) => {
             setClientFiles(response.data);
+            console.log(response.data)
+        })
+        .catch((error) => {
+            // console.log(error);
+            console.log("There are no client files for this client container")
         })
     }
 
@@ -119,7 +134,7 @@ const ClientFilesPage = () => {
 
                     <div className='client_files_container'>
                         {clientFiles.map((file, index) => (
-                            <div className='client_single_file' key={index}>
+                            <div className='client_single_file' key={index} onClick={() => handleFileDownload(file.file_path)}>
                                 <div className='file_left_side'>
                                     <img src={getFileIcon(file.file_extension)} alt='file_icon_img' className='file_icon_img' />
                                 </div>
