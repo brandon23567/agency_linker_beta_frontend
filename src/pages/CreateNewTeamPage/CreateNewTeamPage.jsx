@@ -14,7 +14,7 @@ const CreateNewTeamPage = () => {
     const [teamAssignedClient, setTeamAssignedClient] = useState("");
     const [teamProfileImg, setTeamProfileImg] = useState(null);
 
-    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
+    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
 
     const CreateNewTeam = (e) => {
         e.preventDefault();

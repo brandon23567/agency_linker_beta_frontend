@@ -13,7 +13,7 @@ const AgencyTeamPage = () => {
     const [currentUserTeams, setCurrentUserTeams] = useState([])
 
     // const currentDevelopmentEnviroment = process.env.PRODUCTION_ENV
-    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
+    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
 
 
     const getAllTeamsCurrentUserIsAPartOf = () => {

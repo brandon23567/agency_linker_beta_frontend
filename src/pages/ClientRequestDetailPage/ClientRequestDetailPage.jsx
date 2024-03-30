@@ -15,7 +15,7 @@ const ClientRequestDetailPage = () => {
 
     const { teamUniqueLink, clientName, client_request_title } = useParams();
 
-    const currentDevelopmentEnviroment = "https://agency-linker-beta.onrender.com/";
+    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
 
 
     const getCurrentActiveClientRequest = () => {
