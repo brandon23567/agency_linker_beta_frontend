@@ -3,7 +3,6 @@ import "./AgencyTeamPage.css"
 import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken';
 import { Link } from 'react-router-dom'
 
 const AgencyTeamPage = () => {
@@ -59,7 +58,6 @@ const AgencyTeamPage = () => {
 
     return (
         <div className='main_agency_team_page_outer_container'>
-            <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 

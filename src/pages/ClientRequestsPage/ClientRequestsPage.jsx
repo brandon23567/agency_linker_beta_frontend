@@ -4,7 +4,6 @@ import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken';
 import { useParams } from 'react-router-dom';
 
 const ClientRequestsPage = () => {
@@ -76,7 +75,6 @@ const ClientRequestsPage = () => {
 
     return (
         <div className='client_requests_outer_main_container'>
-            <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 

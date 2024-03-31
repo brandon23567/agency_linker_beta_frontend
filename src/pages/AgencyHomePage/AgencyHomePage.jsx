@@ -3,7 +3,6 @@ import "./AgencyHomePage.css"
 import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken'
 import { Link, useParams } from 'react-router-dom';
 
 const AgencyHomePage = () => {
@@ -92,7 +91,6 @@ const AgencyHomePage = () => {
 
     return (
         <div className='agency_homepage_outer_main_container'>
-            <RefreshToken />
             <div className='container'>
                 <div className='sidenavbar_container'>
                     <SideNavbar 

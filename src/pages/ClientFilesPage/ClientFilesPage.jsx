@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import "./ClientFilesPage.css"
 import SideNavbar from '../../components/SideNavbar/SideNavbar'
-
 import TestFileIcon1 from "../../images/icons/docx-file.png";
 import TestFileIcon2 from "../../images/icons/pdf.png";
 import TestFileIcon3 from "../../images/icons/ppt.png";
 import TestFileIcon4 from "../../images/icons/txt-file.png";
 import TestFileIcon5 from "../../images/icons/xlsx.png";
-
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken'
 import { useParams, Link } from 'react-router-dom';
 
 const ClientFilesPage = () => {
@@ -111,7 +108,6 @@ const ClientFilesPage = () => {
 
     return (
         <div className='main_client_files_outer_container'>
-            <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 

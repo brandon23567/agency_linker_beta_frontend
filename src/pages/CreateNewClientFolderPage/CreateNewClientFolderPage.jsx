@@ -3,7 +3,6 @@ import "./CreateNewClientFolderPage.css";
 import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken'
 import { useParams } from 'react-router-dom';
 
 const CreateNewClientFolderPage = () => {
@@ -72,7 +71,6 @@ const CreateNewClientFolderPage = () => {
 
     return (
         <div className='outer_main_create_new_folder_container'>
-            <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
 

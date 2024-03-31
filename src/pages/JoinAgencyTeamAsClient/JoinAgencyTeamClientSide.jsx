@@ -3,7 +3,6 @@ import "./JoinAgencyTeamClientSide.css"
 import ClientNavbar from '../../components/ClientSideNavbar/ClientNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken'
 
 const JoinAgencyTeamClientSide = () => {
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
@@ -66,7 +65,6 @@ const JoinAgencyTeamClientSide = () => {
 
     return (
         <div className='main_outer_join_team_as_client_continaer'>
-            <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
                     <ClientNavbar 

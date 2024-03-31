@@ -3,7 +3,6 @@ import "./ClientHomePage.css";
 import ClientNavbar from "../../components/ClientSideNavbar/ClientNavbar";
 import axios from "axios";
 import Cookies from "js-cookie";
-import RefreshToken from "../../components/RefreshToken/RefreshToken";
 import { Link } from "react-router-dom";
 
 const ClientHomePage = () => {
@@ -65,7 +64,6 @@ const ClientHomePage = () => {
 
 	return (
 		<div className="main_outer_client_home_container">
-			<RefreshToken />
 		<div className="container">
 			<div className="navbar_container">
 				<ClientNavbar

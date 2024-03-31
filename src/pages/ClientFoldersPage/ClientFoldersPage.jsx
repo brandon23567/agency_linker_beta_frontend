@@ -5,7 +5,6 @@ import FolderIcon from "../../images/icons/shared-folder.png"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken'
 import { useParams } from 'react-router-dom';
 
 const ClientFoldersPage = () => {
@@ -79,7 +78,6 @@ const ClientFoldersPage = () => {
 
     return (
         <div className='client_folders_main_outer_container'>
-            <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 

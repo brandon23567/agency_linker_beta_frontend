@@ -3,7 +3,6 @@ import "./CreateNewClientRequest.css"
 import ClientNavbar from '../../components/ClientSideNavbar/ClientNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken'
 import { useParams } from 'react-router-dom';
 
 const CreateNewClientRequest = () => {
@@ -76,7 +75,6 @@ const CreateNewClientRequest = () => {
 
     return (
         <div className='main_outer_create_new_client_request_container'>
-            <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
                     <ClientNavbar

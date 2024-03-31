@@ -3,7 +3,6 @@ import "./ClientAgencyTeamDetailPage.css"
 import ClientNavbar from '../../components/ClientSideNavbar/ClientNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken'
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
@@ -72,7 +71,6 @@ const ClientAgencyTeamDetailPage = () => {
 
     return (
         <div className='main_outer_client_team_detail_page'>
-            <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
                     <ClientNavbar

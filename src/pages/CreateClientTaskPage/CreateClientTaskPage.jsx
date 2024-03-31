@@ -3,7 +3,6 @@ import "./CreateClientTaskPage.css"
 import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken'
 import { useParams } from 'react-router-dom';
 
 const CreateClientTaskPage = () => {
@@ -76,7 +75,6 @@ const CreateClientTaskPage = () => {
 
     return (
         <div className='create_new_client_task_container'>
-            <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 

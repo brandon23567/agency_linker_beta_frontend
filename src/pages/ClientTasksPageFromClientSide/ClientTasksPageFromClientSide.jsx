@@ -3,7 +3,6 @@ import "./ClientTasksPageFromClientSide.css"
 import ClientNavbar from '../../components/ClientSideNavbar/ClientNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken'
 import { useParams } from 'react-router-dom';
 
 
@@ -65,7 +64,6 @@ const ClientTasksPageFromClientSide = () => {
 
     return (
         <div className='main_outer_task_container'>
-            <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
                     <ClientNavbar

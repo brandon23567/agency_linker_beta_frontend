@@ -3,7 +3,6 @@ import "./JoinNewAgencyTeamPage.css"
 import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import RefreshToken from '../../components/RefreshToken/RefreshToken';
 import { useParams } from 'react-router-dom';
 
 const JoinNewAgencyTeamPage = () => {
@@ -66,7 +65,6 @@ const JoinNewAgencyTeamPage = () => {
 
     return (
         <div className='main_join_new_agency_outer_container'>
-            <RefreshToken />
             <div className='container'>
                 <div className='navbar_container'>
                     <SideNavbar 
