@@ -37,7 +37,6 @@ const AgencyTeamPage = () => {
             headers: {
                 "Content-Type": "multipart/form-data",
                 "Authorization": `Bearer ${Cookies.get("access_token")}`
-                // "Authorization": `Bearer ${currentUserToken}`
             }
         }
 
@@ -45,8 +44,6 @@ const AgencyTeamPage = () => {
 
             const { "current user profile image": profileImageUrl } = response.data;
 			const { "current user user": usersUsername } = response.data;
-
-            console.log(response)
 
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
