@@ -24,7 +24,6 @@ const AgencyClientContainerPage = () => {
 
     const getAllTasksInsideClientContainer = () => {
         const dataFromUrl = {currentTeamLink, currentClientContainerName};
-        console.log(dataFromUrl)
         const actualTeamUniqueLink = dataFromUrl.currentTeamLink;
         const actualClientContainerName = dataFromUrl.currentClientContainerName
 

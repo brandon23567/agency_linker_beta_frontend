@@ -21,7 +21,6 @@ const AgencyHomePage = () => {
     const getCurrentTeamUniqueLink = () => {
         const currentLink = {slug}
         const actual_current_team_link = currentLink.slug;
-        console.log("your current team link", actual_current_team_link)
         setCurrentTeamLink(actual_current_team_link);
     }
 

@@ -52,6 +52,7 @@ const ClientFilesPage = () => {
             setClientFiles(response.data);
         })
         .catch((error) => {
+            console.log(error);
             
         })
     }
