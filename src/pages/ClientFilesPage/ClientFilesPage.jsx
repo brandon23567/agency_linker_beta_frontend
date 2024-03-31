@@ -41,7 +41,8 @@ const ClientFilesPage = () => {
         const url = `${currentDevelopmentEnviroment}api/agency_side/get_all_client_files_inside_client_container/${actualTeamUniqueLink}/client_files/${actualClientName}/${actualClientFolderName}/`;
         const config = {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get("access_token")}`
             }
         }
 

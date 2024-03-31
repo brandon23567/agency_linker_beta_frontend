@@ -30,10 +30,11 @@ const AgencySignupPage = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
-            const { access_token, refresh_token } = response.data;
+            // const { access_token, refresh_token } = response.data;
 
-            Cookies.set("access_token", access_token)
-			Cookies.set("refresh_token", refresh_token)
+            const new_user_token = response.data.access_token
+            Cookies.set("access_token", new_user_token)
+            
             alert("Signup was successful");
             window.location.href = "/select_types/agency_signin";
         })

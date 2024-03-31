@@ -25,7 +25,8 @@ const ClientRequestDetailPage = () => {
         const url = `${currentDevelopmentEnviroment}api/agency_side/get_current_client_request_detail/${currentTeamUniqueLink}/${currentClientContainer}/${currentClientRequestTitle}/`;
         const config = {
             headers: {
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data",
+                "Authorization": `Bearer ${Cookies.get("access_token")}`
             }
         }
 

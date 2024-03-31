@@ -28,11 +28,16 @@ const AgencySigninPage = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
-            const { access_token, refresh_token } = response.data;
-            Cookies.set("access_token", access_token)
-			Cookies.set("refresh_token", refresh_token)
+            // const { access_token, refresh_token } = response.data;
+            console.log(response)
+            const new_user_token = response.data.access_token
+            Cookies.set("access_token", new_user_token)
+			// Cookies.set("refresh_token", refresh_token)
             alert("You have been logged into your account")
             window.location.href = "/agency_teams";
+        })
+        .catch((error) => {
+            console.log(error)
         })
 
     }

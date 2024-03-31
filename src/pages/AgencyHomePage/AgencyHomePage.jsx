@@ -31,7 +31,8 @@ const AgencyHomePage = () => {
         const url = `${currentDevelopmentEnviroment}api/agency_side/get_client_containers_inside_agency_team/${actualCurrentTeamContainerName}/`;
         const config = {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get("access_token")}`
             }
         };
 
@@ -49,7 +50,8 @@ const AgencyHomePage = () => {
         const url = `${currentDevelopmentEnviroment}api/agency_side/go_to_agency_team_detail/${slug}`
         const config = {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get("access_token")}`
             }
         }
 

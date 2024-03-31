@@ -30,7 +30,8 @@ const CreateNewClientFolderPage = () => {
         formData.append("clientFolderName", clientFolderName)
         const config = {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get("access_token")}`
             }
         }
 

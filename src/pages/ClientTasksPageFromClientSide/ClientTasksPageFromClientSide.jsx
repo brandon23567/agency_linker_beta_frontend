@@ -25,7 +25,8 @@ const ClientTasksPageFromClientSide = () => {
         const url = `${currentDevelopmentEnviroment}api/agency_client_side/get_current_clients_request_they_made/${currentTeamLink}/${currentClientContainerName}/`;
         const config = {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get("access_token")}`
             }
         }
 
@@ -43,7 +44,7 @@ const ClientTasksPageFromClientSide = () => {
         const config = {
             headers: {
                 "Content-Type": "multipart/form-data",
-                Authorization: `Bearer ${currentUserToken}`,
+                "Authorization": `Bearer ${currentUserToken}`,
             },
         };
 

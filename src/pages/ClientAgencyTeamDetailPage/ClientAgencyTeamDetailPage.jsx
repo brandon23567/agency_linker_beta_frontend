@@ -26,7 +26,8 @@ const ClientAgencyTeamDetailPage = () => {
         const url = `${currentDevelopmentEnviroment}api/agency_client_side/get_current_team_requests/${currentTeamUniqueLink}/${currentClientContainer}/`
         const config = {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get("access_token")}`
             }
         }
 

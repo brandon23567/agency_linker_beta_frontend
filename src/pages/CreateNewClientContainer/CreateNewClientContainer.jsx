@@ -34,7 +34,8 @@ const CreateNewClientContainer = () => {
         const url = `${currentDevelopmentEnviroment}api/agency_side/create_new_client_container/`
         const config = {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get("access_token")}`
             }
         }
 
@@ -52,7 +53,8 @@ const CreateNewClientContainer = () => {
         const url = `${currentDevelopmentEnviroment}api/agency_side/go_to_agency_team_detail/${slug}`
         const config = {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get("access_token")}`
             }
         }
 

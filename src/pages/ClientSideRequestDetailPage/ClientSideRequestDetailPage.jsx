@@ -31,7 +31,7 @@ const ClientSideRequestDetailPage = () => {
         const config = {
             headers: {
                 "Content-Type": "multipart/form-data",
-                Authorization: `Bearer ${currentUserToken}`,
+                "Authorization": `Bearer ${currentUserToken}`,
             },
         };
 

@@ -27,7 +27,8 @@ const ClientRequestsPage = () => {
         const url = `${currentDevelopmentEnviroment}api/agency_side/get_all_client_requests_inside_container/${currentTeamUniqueLink}/${currentClientContainer}/`;
         const config = {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get("access_token")}`
             }
         }
 

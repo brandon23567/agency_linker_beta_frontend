@@ -22,7 +22,8 @@ const JoinNewAgencyTeamPage = () => {
         const url = `${currentDevelopmentEnviroment}api/agency_side/join_agency_team/${slug}/`
         const config = {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Cookies.get("access_token")}`
             }
         }
 

@@ -31,10 +31,11 @@ const CreateNewClientFilePage = () => {
         formData.append("fileExtension", fileExtension);
 
         try {
-            const url = `${currentDevelopmentEnviromentForUpload}create_new_client_file/${actualTeamUniqueLink}/create_client_file/${actualClientName}/${actualClientFolderName}/`
+            const url = `${currentDevelopmentEnviroment}create_new_client_file/${actualTeamUniqueLink}/create_client_file/${actualClientName}/${actualClientFolderName}/`
             const config = {
                 headers: {
-                    "Content-Type": "multipart/form-data"
+                    "Content-Type": "multipart/form-data",
+                    "Authorization": `Bearer ${Cookies.get("access_token")}`
                 }
             }
             await axios.post(url, formData, config);
