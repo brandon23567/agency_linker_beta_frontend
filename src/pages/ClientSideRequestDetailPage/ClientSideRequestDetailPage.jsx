@@ -4,8 +4,10 @@ import ClientNavbar from "../../components/ClientSideNavbar/ClientNavbar";
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useParams } from 'react-router-dom';
+import Loading from '../../components/LoadingComponent/Loading';
 
 const ClientSideRequestDetailPage = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
 
@@ -37,6 +39,7 @@ const ClientSideRequestDetailPage = () => {
 
         axios.get(url, config).then((response) => {
             setCurrentClientRequestData(response.data);
+            setIsLoading(false);
         }).catch((error) => {
             console.log(error)
         })
@@ -54,11 +57,14 @@ const ClientSideRequestDetailPage = () => {
         };
 
         axios.get(url, config).then((response) => {
-        const { "current user profile image": profileImageUrl } = response.data;
-        const { "current user user": usersUsername } = response.data;
+            const { "current user profile image": profileImageUrl } = response.data;
+            const { "current user user": usersUsername } = response.data;
 
-        setCurrentUserProfileImg(profileImageUrl);
-        setCurrentUserUsername(usersUsername);
+            setCurrentUserProfileImg(profileImageUrl);
+            setCurrentUserUsername(usersUsername);
+
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
         });
     };
 
@@ -69,6 +75,19 @@ const ClientSideRequestDetailPage = () => {
 
     useEffect(() => {
         getCurrentAuthenticatedClientUser();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAuthenticatedClientUser();
+        }
+
+
         getCurrentActiveClientRequestClientSide()
     }, [teamUniqueLink, clientName, client_request_title]);
     
@@ -83,7 +102,24 @@ const ClientSideRequestDetailPage = () => {
                 </div>
 
                 <div className='content_container'>
-                    <div className='request_detail_container'>
+                    {isLoading ? (<Loading />) : (
+
+                        <div className='request_detail_container'>
+                            <div className='title_container'>
+                                <h2>{currentClientRequestData.request_title}</h2>
+                            </div>
+
+                            <p className='date_requested'>
+                                {formatDate(currentClientRequestData.date_requested)}
+                            </p>
+
+                            <p className='request_body_content'>
+                                {currentClientRequestData.client_request_body}
+                            </p>
+                        </div>
+
+                    )}
+                    {/* <div className='request_detail_container'>
                         <div className='title_container'>
                             <h2>{currentClientRequestData.request_title}</h2>
                         </div>
@@ -95,7 +131,7 @@ const ClientSideRequestDetailPage = () => {
                         <p className='request_body_content'>
                             {currentClientRequestData.client_request_body}
                         </p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

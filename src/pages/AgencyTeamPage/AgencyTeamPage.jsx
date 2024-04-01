@@ -4,8 +4,11 @@ import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
+import Loading from '../../components/LoadingComponent/Loading'
 
 const AgencyTeamPage = () => {
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
@@ -25,6 +28,11 @@ const AgencyTeamPage = () => {
 
         axios.get(url, config).then((response) => {
             setCurrentUserTeams(response.data.user_teams);
+            setIsLoading(false);
+        })
+        .catch((error) => {
+            console.log(error);
+            setIsLoading(false);
         })
     }
 
@@ -48,13 +56,31 @@ const AgencyTeamPage = () => {
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
 
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
+
         })
 
     }
 
+    // const deleteLocalStorageStuff = () => {
+    //     localStorage.clear();
+    // }
+
     useEffect(() => {
-        getCurrentAgencyUserAuthenticated();
+        // getCurrentAgencyUserAuthenticated();
         getAllTeamsCurrentUserIsAPartOf();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAgencyUserAuthenticated();
+        }
     }, [])
 
     return (
@@ -70,6 +96,10 @@ const AgencyTeamPage = () => {
                 <div className='content_container'>
                     <h2>All the teams you are a part of</h2>
 
+                    {/* <button onClick={() => deleteLocalStorageStuff()}>
+                        Delete local storage for nwo
+                    </button> */}
+
                     <div className='add_new_team_btn_container'>
                         <button className='add_new_team_btn'>
                             <Link to={`/agency_teams/create_new_team`} className='actual_link'>Add New Team</Link>
@@ -80,7 +110,22 @@ const AgencyTeamPage = () => {
                         </button>
                     </div>
 
-                    <div className='users_teams_container'>
+                    {isLoading ? (<Loading />) : (
+
+                        <div className='users_teams_container'>
+                            {currentUserTeams.map((single_team, index) => (
+                                <div className='single_team' key={index}>
+                                    <Link to={`/agency_teams/${single_team.team_unique_link}/agency_home`} className='link_to_agency_team_page'><h2 className='team_name'>{single_team.team_name}</h2></Link>
+                                    <p className='created_by'>Created by: @{single_team.user_who_created}</p>
+                                    <p className='assigned_client'>Client assigned: {single_team.client_assigned}</p>
+                                    <p className='number_of_members'>Team Members: {single_team.num_members}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                    )}
+
+                    {/* <div className='users_teams_container'>
                         {currentUserTeams.map((single_team, index) => (
                             <div className='single_team' key={index}>
                                 <Link to={`/agency_teams/${single_team.team_unique_link}/agency_home`} className='link_to_agency_team_page'><h2 className='team_name'>{single_team.team_name}</h2></Link>
@@ -89,7 +134,7 @@ const AgencyTeamPage = () => {
                                 <p className='number_of_members'>Team Members: {single_team.num_members}</p>
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

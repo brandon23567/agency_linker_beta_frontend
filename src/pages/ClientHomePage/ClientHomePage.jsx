@@ -4,8 +4,10 @@ import ClientNavbar from "../../components/ClientSideNavbar/ClientNavbar";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
+import Loading from "../../components/LoadingComponent/Loading";
 
 const ClientHomePage = () => {
+	const [isLoading, setIsLoading] = useState(true);
 	const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
 	const [currentUserUsername, setCurrentUserUsername] = useState("");
 	const [currentClientsAgencyTeams, setCurrentClientsAgencyTeams] = useState([]);
@@ -21,19 +23,21 @@ const ClientHomePage = () => {
 		] = `Bearer ${currentUserToken}`;
 
 		const config = {
-		headers: {
-			"Content-Type": "multipart/form-data",
-			Authorization: `Bearer ${currentUserToken}`,
-		},
+			headers: {
+				"Content-Type": "multipart/form-data",
+				Authorization: `Bearer ${currentUserToken}`,
+			},
 		};
 
 		axios
 		.get(url, config)
-		.then((response) => {
-			setCurrentClientsAgencyTeams(response.data);
-		})
-		.catch((error) => {
-		});
+			.then((response) => {
+				setCurrentClientsAgencyTeams(response.data);
+				setIsLoading(false);
+			})
+			.catch((error) => {
+				setIsLoading(false);
+			});
 	};
 
 	const getCurrentAuthenticatedClientUser = () => {
@@ -54,11 +58,27 @@ const ClientHomePage = () => {
 
 			setCurrentUserProfileImg(profileImageUrl);
 			setCurrentUserUsername(usersUsername);
+
+			sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
 		});
   	};
 
 	useEffect(() => {
-		getCurrentAuthenticatedClientUser();
+		// getCurrentAuthenticatedClientUser();
+
+		const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+			setIsLoading(false);
+        } else {
+            getCurrentAuthenticatedClientUser();
+        }
+
+
 		getAllCurrentClientsTeamsAPartOf();
 	}, []);
 
@@ -76,6 +96,8 @@ const ClientHomePage = () => {
 				<h1>Your current assigned agency team</h1>
 
 				<div className="current_clients_agency_teams">
+					{isLoading ? (<Loading />) : (
+
 						<div className="current_clients_agency_teams">
 							{currentClientsAgencyTeams.map((team) => (
 							<div key={team.team_unique_link} className="single_client_agency_team">
@@ -90,6 +112,22 @@ const ClientHomePage = () => {
 							</div>
 							))}
 						</div>
+
+					)}
+						{/* <div className="current_clients_agency_teams">
+							{currentClientsAgencyTeams.map((team) => (
+							<div key={team.team_unique_link} className="single_client_agency_team">
+								<Link to={`/client_side/agency_client_home/${team.team_unique_link}/${team.current_joined_client_container}`} className="actual_link_to_team_detail">
+								<div className="team_leftside">
+									<img src={`http://localhost:8000${team.team_image}`} alt="team" className="current_team_image" />
+								</div>
+								<div className="team_right_side">
+									<h3>{team.team_name}</h3>
+								</div>
+								</Link>
+							</div>
+							))}
+						</div> */}
 				</div>
 			</div>
 		</div>

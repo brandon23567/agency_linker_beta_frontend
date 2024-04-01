@@ -4,8 +4,11 @@ import SideNavbar from "../../components/SideNavbar/SideNavbar.jsx"
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useParams } from 'react-router-dom';
+import Loading from '../../components/LoadingComponent/Loading.jsx'
 
 const ClientRequestDetailPage = () => {
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
@@ -32,6 +35,7 @@ const ClientRequestDetailPage = () => {
 
         axios.get(url, config).then((response) => {
             setCurrentClientRequestData(response.data);
+            setIsLoading(false);
         }).catch((error) => {
         })
     }
@@ -55,6 +59,9 @@ const ClientRequestDetailPage = () => {
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
 
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
+
         })
 
     }
@@ -65,7 +72,20 @@ const ClientRequestDetailPage = () => {
     };
 
     useEffect(() => {
-        getCurrentAgencyUserAuthenticated();
+        // getCurrentAgencyUserAuthenticated();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAgencyUserAuthenticated();
+        }
+
+
         getCurrentActiveClientRequest();
     }, [teamUniqueLink, clientName, client_request_title])
 
@@ -80,7 +100,24 @@ const ClientRequestDetailPage = () => {
                 </div>
 
                 <div className='content_container'>
-                    <div className='request_detail_container'>
+                    {isLoading ? (<Loading />) : (
+
+                        <div className='request_detail_container'>
+                            <div className='title_container'>
+                                <h2>{currentClientRequestData.request_title}</h2>
+                            </div>
+
+                            <p className='date_requested'>
+                                {formatDate(currentClientRequestData.date_requested)}
+                            </p>
+
+                            <p className='request_body_content'>
+                                {currentClientRequestData.client_request_body}
+                            </p>
+                        </div>
+
+                    )}
+                    {/* <div className='request_detail_container'>
                         <div className='title_container'>
                             <h2>{currentClientRequestData.request_title}</h2>
                         </div>
@@ -92,7 +129,7 @@ const ClientRequestDetailPage = () => {
                         <p className='request_body_content'>
                             {currentClientRequestData.client_request_body}
                         </p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

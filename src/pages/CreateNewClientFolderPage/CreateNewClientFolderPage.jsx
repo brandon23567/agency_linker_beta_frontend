@@ -4,8 +4,10 @@ import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useParams } from 'react-router-dom';
+import Loading from '../../components/LoadingComponent/Loading';
 
 const CreateNewClientFolderPage = () => {
+    const [isLoading, setIsLoading] = useState(true);
 
     const { teamUniqueLink, clientName } = useParams();
 
@@ -37,6 +39,7 @@ const CreateNewClientFolderPage = () => {
 
         axios.post(url, formData, config).then((response) => {
             alert("New client folder has been created")
+            setIsLoading(false);
             window.location.href = `/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/client_folders`
         })
     }
@@ -61,12 +64,28 @@ const CreateNewClientFolderPage = () => {
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
 
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
+
         })
 
     }
 
     useEffect(() => {
-        getCurrentAgencyUserAuthenticated();
+        // getCurrentAgencyUserAuthenticated();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAgencyUserAuthenticated();
+        }
+
+
     }, [teamUniqueLink, clientName])
 
 

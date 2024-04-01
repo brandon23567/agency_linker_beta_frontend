@@ -9,8 +9,11 @@ import TestFileIcon5 from "../../images/icons/xlsx.png";
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useParams, Link } from 'react-router-dom';
+import Loading from '../../components/LoadingComponent/Loading';
 
 const ClientFilesPage = () => {
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const { teamUniqueLink, clientName, clientFolderName } = useParams();
 
@@ -18,16 +21,6 @@ const ClientFilesPage = () => {
     const [currentUserUsername, setCurrentUserUsername] = useState("");
 
     const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
-
-
-    const handleFileDownload = (fileUrl) => {
-        const link = document.createElement('a');
-        link.href = fileUrl;
-        link.setAttribute('download', ''); 
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
 
 
     const [clientFiles, setClientFiles] = useState([]);
@@ -48,9 +41,11 @@ const ClientFilesPage = () => {
 
         axios.get(url, config).then((response) => {
             setClientFiles(response.data);
+            setIsLoading(false);
         })
         .catch((error) => {
             console.log(error);
+            setIsLoading(false);
             
         })
     }
@@ -92,13 +87,28 @@ const ClientFilesPage = () => {
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
 
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
+
         })
 
     }
 
     useEffect(() => {
-        getCurrentAgencyUserAuthenticated();
+        // getCurrentAgencyUserAuthenticated();
         getAllCurrentClientFiles();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAgencyUserAuthenticated();
+        }
+        
     }, [teamUniqueLink, clientName, clientFolderName])
 
 
@@ -128,7 +138,30 @@ const ClientFilesPage = () => {
                         </button>
                     </div>
 
-                    <div className='client_files_container'>
+                    {isLoading ? (<Loading />) : (
+
+                        <div className='client_files_container'>
+                            {clientFiles.map((file, index) => (
+                                <div className='client_single_file' key={index}>
+                                    <div className='file_left_side'>
+                                        <img src={getFileIcon(file.file_extension)} alt='file_icon_img' className='file_icon_img' />
+                                    </div>
+                                    <div className='file_right_side'>
+                                        <h3>{file.file_name}</h3>
+                                        <p className='user_who_uploaded'>
+                                            Uploaded by: {file.user_who_uploaded}
+                                        </p>
+                                        <p className='date_uploaded'>
+                                            Date Uploaded: {formatDate(file.date_uploaded)}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                    )}
+
+                    {/* <div className='client_files_container'>
                         {clientFiles.map((file, index) => (
                             <div className='client_single_file' key={index} onClick={() => handleFileDownload(file.file_path)}>
                                 <div className='file_left_side'>
@@ -145,7 +178,7 @@ const ClientFilesPage = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

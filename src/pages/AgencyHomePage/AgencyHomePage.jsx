@@ -4,8 +4,11 @@ import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { Link, useParams } from 'react-router-dom';
+import Loading from '../../components/LoadingComponent/Loading'
 
 const AgencyHomePage = () => {
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const { slug } = useParams();
 
@@ -40,6 +43,7 @@ const AgencyHomePage = () => {
             .then((response) => {
                 const containers = response.data.team_details.client_containers;
                 setClientContainers(containers);
+                setIsLoading(false)
             })
             .catch((error) => {
                 console.log(error);
@@ -80,12 +84,28 @@ const AgencyHomePage = () => {
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
 
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
+
         })
 
     }
 
     useEffect(() => {
-        getCurrentAgencyUserAuthenticated();
+        // getCurrentAgencyUserAuthenticated();
+        
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAgencyUserAuthenticated();
+        }
+
+
         getCurrentTeamsDetails();
         getCurrentAgencyTeamClientContainer();
         getCurrentTeamUniqueLink();
@@ -109,7 +129,34 @@ const AgencyHomePage = () => {
                         </button>
                     </div>
 
-                    <div className='client_containers_container'>
+                    {isLoading ? (<Loading />) : (
+
+                        <div className='client_containers_container'>
+                            {clientContainers.map((container, index) => (
+                                <div className='single_client' key={index}>
+                                    <Link to={`/agency_teams/agency_home/${currentTeamLink}/agency_home/${container.client_name}`} className='actual_container_link'>
+                                        <div className='client_top_part'>
+                                            <h2>{container.client_name}</h2>
+                                        </div>
+                                        <div className='client_bottom_part'>
+                                            <p className='client_description'>
+                                                {container.client_description}
+                                            </p>
+                                            <p className='client_email'>
+                                                Client Email: {container.client_email}
+                                            </p>
+                                            <p className='client_budget'>
+                                                Client Budget: {container.client_budget}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+
+                    )}
+
+                    {/* <div className='client_containers_container'>
                         {clientContainers.map((container, index) => (
                             <div className='single_client' key={index}>
                                 <Link to={`/agency_teams/agency_home/${currentTeamLink}/agency_home/${container.client_name}`} className='actual_container_link'>
@@ -130,7 +177,7 @@ const AgencyHomePage = () => {
                                 </Link>
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

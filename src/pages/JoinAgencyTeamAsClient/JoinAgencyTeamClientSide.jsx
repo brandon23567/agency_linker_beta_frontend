@@ -3,8 +3,10 @@ import "./JoinAgencyTeamClientSide.css"
 import ClientNavbar from '../../components/ClientSideNavbar/ClientNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import Loading from '../../components/LoadingComponent/Loading'
 
 const JoinAgencyTeamClientSide = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
 
@@ -30,6 +32,7 @@ const JoinAgencyTeamClientSide = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
+            setIsLoading(false);
             alert("You have joined this team as a client");
             window.location.href = "/client_side/agency_client_home";
         }).catch((error) => {
@@ -55,11 +58,27 @@ const JoinAgencyTeamClientSide = () => {
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
 
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
+
         })
     }
 
     useEffect(() => {
-        getCurrentAuthenticatedClientUser();
+        // getCurrentAuthenticatedClientUser();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAuthenticatedClientUser();
+        }
+
+
     }, [])
 
 

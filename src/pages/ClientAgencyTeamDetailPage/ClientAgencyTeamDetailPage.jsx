@@ -5,9 +5,11 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
-
+import Loading from "../../components/LoadingComponent/Loading";
 
 const ClientAgencyTeamDetailPage = () => {
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
@@ -33,8 +35,10 @@ const ClientAgencyTeamDetailPage = () => {
 
         axios.get(url, config).then((response) => {
             setRequests(response.data);
+            setIsLoading(false);
         }).catch((error) => {
             console.log(error)
+            setIsLoading(false);
         })
     }
 
@@ -56,6 +60,9 @@ const ClientAgencyTeamDetailPage = () => {
 
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
+
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
         });
     };
 
@@ -66,7 +73,19 @@ const ClientAgencyTeamDetailPage = () => {
 
 
     useEffect(() => {
-        getCurrentAuthenticatedClientUser();
+        // getCurrentAuthenticatedClientUser();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAuthenticatedClientUser();
+        }
+
         getAllPreviousMadeClientRequests();
     }, [agency_team_link, agency_client_container_name]);
 
@@ -83,7 +102,27 @@ const ClientAgencyTeamDetailPage = () => {
                 <div className='content_container'>
                     <h2 className="big_title">All previously made requests</h2>
 
-                    <div className="requests_container">
+                    {isLoading ? (<Loading />) : (
+
+                        <div className="requests_container">
+                            {requests.map((request, index) => (
+                                <div className="single_request" key={index}>
+                                    <Link to={`/client_side/agency_client_home/${agency_team_link}/${agency_client_container_name}/${request.request_title}`} className="actual_request_detail_container">
+                                        <h2 className="request_title">{request.request_title}</h2>
+                                        <p className="request_short_description">
+                                            {request.short_description}
+                                        </p>
+                                        <p className="request_date_posted">
+                                            Date posted: {formatDate(request.date_requested)}
+                                        </p>
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+
+                    )}
+
+                    {/* <div className="requests_container">
                         {requests.map((request, index) => (
                             <div className="single_request" key={index}>
                                 <Link to={`/client_side/agency_client_home/${agency_team_link}/${agency_client_container_name}/${request.request_title}`} className="actual_request_detail_container">
@@ -97,7 +136,7 @@ const ClientAgencyTeamDetailPage = () => {
                                 </Link>
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

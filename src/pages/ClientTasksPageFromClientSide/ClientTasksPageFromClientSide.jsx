@@ -4,9 +4,11 @@ import ClientNavbar from '../../components/ClientSideNavbar/ClientNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useParams } from 'react-router-dom';
+import Loading from "../../components/LoadingComponent/Loading";
 
 
 const ClientTasksPageFromClientSide = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
 
@@ -32,6 +34,7 @@ const ClientTasksPageFromClientSide = () => {
 
         axios.get(url, config).then((response) => {
             setClientTasks(response.data);
+            setIsLoading(false);
         }).catch((error) => {
             console.log(error)
         })
@@ -55,11 +58,27 @@ const ClientTasksPageFromClientSide = () => {
 
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
+
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
         });
     };
 
     useEffect(() => {
-        getCurrentAuthenticatedClientUser();
+        // getCurrentAuthenticatedClientUser();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAuthenticatedClientUser();
+        }
+
+
         getCurrentClientsTasksMadeByClient();
     }, [agency_team_link, agency_client_container_name]);
 
@@ -76,7 +95,22 @@ const ClientTasksPageFromClientSide = () => {
                 <div className='content_container'>
                     <h2>All your tasks</h2>
 
-                    <div className="tasks_container">
+                    {isLoading ? (<Loading />) : (
+
+                        <div className="tasks_container">
+                            {clientTasks.map((task, index) => (
+                            <div className="single_task" key={index}>
+                                <h3>{task.task_title}</h3>
+                                <p className="task_short_description">{task.task_short_description}</p>
+                                <p>Due Date: {task.task_due_date}</p>
+                                <p>Status: {task.task_current_status}</p>
+                            </div>
+                            ))}
+                        </div>
+
+                    )}
+
+                    {/* <div className="tasks_container">
                         {clientTasks.map((task, index) => (
                         <div className="single_task" key={index}>
                             <h3>{task.task_title}</h3>
@@ -85,7 +119,7 @@ const ClientTasksPageFromClientSide = () => {
                             <p>Status: {task.task_current_status}</p>
                         </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

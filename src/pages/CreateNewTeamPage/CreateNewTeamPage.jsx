@@ -3,8 +3,10 @@ import "./CreateNewTeamPage.css"
 import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import Loading from '../../components/LoadingComponent/Loading'
 
 const CreateNewTeamPage = () => {
+    const [isLoading, setIsLoading] = useState(true);
 
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
@@ -33,6 +35,7 @@ const CreateNewTeamPage = () => {
 
         axios.post(url, formData, config).then((response) => {
             alert("New team has been created");
+            setIsLoading(false);
             window.location.href = "/agency_teams";
         })
     }
@@ -57,13 +60,29 @@ const CreateNewTeamPage = () => {
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
 
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
+
         })
 
     }
 
 
     useEffect(() => {
-        getCurrentAgencyUserAuthenticated();
+        // getCurrentAgencyUserAuthenticated();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAgencyUserAuthenticated();
+        }
+
+
     }, [])
 
     return (

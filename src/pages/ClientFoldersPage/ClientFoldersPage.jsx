@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useParams } from 'react-router-dom';
+import Loading from '../../components/LoadingComponent/Loading.jsx'
 
 const ClientFoldersPage = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
 
@@ -41,9 +43,11 @@ const ClientFoldersPage = () => {
                     date_created: new Date(folder.date_created).toLocaleString()
                 }));
                 setFolders(formattedFolders);
+                setIsLoading(false);
             })
             .catch(error => {
                 console.error("Error fetching folders:", error);
+                setIsLoading(false);
             });
     }
 
@@ -67,12 +71,27 @@ const ClientFoldersPage = () => {
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
 
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
+
         })
 
     }
 
     useEffect(() => {
-        getCurrentAgencyUserAuthenticated();
+        // getCurrentAgencyUserAuthenticated();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAgencyUserAuthenticated();
+        }
+        
         getCurrentClientFoldersInContainer();
     }, [teamUniqueLink, clientName])
 
@@ -98,7 +117,28 @@ const ClientFoldersPage = () => {
                         </button>
                     </div>
 
-                    <div className='client_folders_container'>
+                    {isLoading ? (<Loading />) : (
+
+                        <div className='client_folders_container'>
+                            {folders.map((folder, index) => (
+                                <div className='single_folder' key={index}>
+                                    <div className='single_folder_leftside'>
+                                        <img src={FolderIcon} className='folder_icon_img' alt='folder_icon_img' />
+                                    </div>
+                                    <div className='single_folder_rightside'>
+                                        <Link to={`/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/client_folders/client_files/${folder.folder_name}/`} className='folder_name'>
+                                            <p className='actual_folder_name'>{folder.folder_name}</p>
+                                            <p className='user_who_uploaded'>By: @{folder.user_who_created}</p>
+                                            <p className='date_when_folder_created'>Date created: {folder.date_created}</p>
+                                        </Link>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                    )}
+
+                    {/* <div className='client_folders_container'>
                         {folders.map((folder, index) => (
                             <div className='single_folder' key={index}>
                                 <div className='single_folder_leftside'>
@@ -113,7 +153,7 @@ const ClientFoldersPage = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

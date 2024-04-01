@@ -4,9 +4,10 @@ import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { Link, useParams } from 'react-router-dom';
-
+import Loading from '../../components/LoadingComponent/Loading'
 
 const TeamMembersPage = () => {
+    const [isLoading, setIsLoading] = useState(true);
 
     const { currentTeamLink } = useParams();
 
@@ -37,10 +38,12 @@ const TeamMembersPage = () => {
         axios.get(url)
             .then(response => {
                 setTeamMembers(response.data.team_members);
+                setIsLoading(false);
                 console.log(response.data)
             })
             .catch(error => {
                 console.error("Error fetching team members:", error);
+                setIsLoading(false);
             });
     }
 
@@ -63,12 +66,27 @@ const TeamMembersPage = () => {
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
 
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
+
         })
 
     }
 
     useEffect(() => {
-        getCurrentAgencyUserAuthenticated();
+        // getCurrentAgencyUserAuthenticated();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAgencyUserAuthenticated();
+        }
+
         getCurrentTeamUniqueLink();
         getCurrentTeamMembers();
     }, [currentTeamLink])
@@ -90,7 +108,26 @@ const TeamMembersPage = () => {
                         <button className='add_new_team_member'>Add New Member</button>
                     </div>
 
-                    <div className='team_members_container'>
+                    {isLoading ? (<Loading />) : (
+
+                        <div className='team_members_container'>
+                            {teamMembers.map(member => (
+                                <div className='single_member' key={member.username}>
+                                    <div className='single_member_top_part'>
+                                        <img src={member.profile_img} alt='user_profile_img' className='user_profile_img' />
+                                    </div>
+                                    <div className='single_member_bottom_part'>
+                                        <h3>
+                                            <Link to="#" className='user_username'>@{member.username}</Link>
+                                        </h3>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                    )}
+
+                    {/* <div className='team_members_container'>
                         {teamMembers.map(member => (
                             <div className='single_member' key={member.username}>
                                 <div className='single_member_top_part'>
@@ -103,7 +140,7 @@ const TeamMembersPage = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

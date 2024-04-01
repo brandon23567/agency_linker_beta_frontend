@@ -4,8 +4,10 @@ import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { Link, useParams } from 'react-router-dom';
+import Loading from '../../components/LoadingComponent/Loading'
 
 const AgencyClientContainerPage = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
 
     const { currentTeamLink, currentClientContainerName } = useParams();
@@ -17,8 +19,20 @@ const AgencyClientContainerPage = () => {
 
 
     useEffect(() => {
-        getCurrentAgencyUserAuthenticated();
+        // getCurrentAgencyUserAuthenticated();
         getAllTasksInsideClientContainer();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAgencyUserAuthenticated();
+        }
+
     }, [currentTeamLink, currentClientContainerName])
 
     const getAllTasksInsideClientContainer = () => {
@@ -37,9 +51,11 @@ const AgencyClientContainerPage = () => {
 
         axios.get(url, config).then((response) => {
             setTasks(response.data.tasks);
+            setIsLoading(false);
         })
         .catch((error) => {
             alert("No tasks inside client container");
+            setIsLoading(false);
             // console.log(error);
         })
     }
@@ -64,6 +80,9 @@ const AgencyClientContainerPage = () => {
 
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
+
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
 
         })
 
@@ -91,7 +110,22 @@ const AgencyClientContainerPage = () => {
                         </button>
                     </div>
 
-                    <div className='objectives_outer_container'>
+                    {isLoading ? (<Loading />) : (
+
+                        <div className='objectives_outer_container'>
+                            {tasks.map(task => (
+                                <div className='single_objective' key={task.task_title}>
+                                    <h3 className='objective_title'>{task.task_title}</h3>
+                                    <p className='objective_description'>{task.task_short_description}</p>
+                                    <p className='objective_date'>Due Date: {task.task_due_date}</p>
+                                    <p className='objective_status'>Current Status: {task.task_current_status}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                    )}
+
+                    {/* <div className='objectives_outer_container'>
                         {tasks.map(task => (
                             <div className='single_objective' key={task.task_title}>
                                 <h3 className='objective_title'>{task.task_title}</h3>
@@ -100,7 +134,7 @@ const AgencyClientContainerPage = () => {
                                 <p className='objective_status'>Current Status: {task.task_current_status}</p>
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

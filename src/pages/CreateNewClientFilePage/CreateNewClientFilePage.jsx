@@ -4,8 +4,10 @@ import SideNavbar from '../../components/SideNavbar/SideNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useParams } from 'react-router-dom';
+import Loading from '../../components/LoadingComponent/Loading'
 
 const CreateNewClientFilePage = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const { teamUniqueLink, clientName, clientFolderName } = useParams();
 
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
@@ -38,8 +40,10 @@ const CreateNewClientFilePage = () => {
                     "Authorization": `Bearer ${Cookies.get("access_token")}`
                 }
             }
-            await axios.post(url, formData, config);
-            alert("New file has been created");
+            await axios.post(url, formData, config).then((response) => {
+                setIsLoading(false);
+                alert("New file has been created and updated")
+            });
         } catch (error) {
             console.error('Error creating new client file:', error.message);
         }
@@ -64,11 +68,27 @@ const CreateNewClientFilePage = () => {
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
 
+            sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
+            sessionStorage.setItem('currentUserUsername', usersUsername);
+
         })
     }
 
     useEffect(() => {
-        getCurrentAgencyUserAuthenticated();
+        // getCurrentAgencyUserAuthenticated();
+
+        const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
+        const cachedUsername = sessionStorage.getItem('currentUserUsername');
+
+        if (cachedProfileImg && cachedUsername) {
+            setCurrentUserProfileImg(cachedProfileImg);
+            setCurrentUserUsername(cachedUsername);
+            setIsLoading(false);
+        } else {
+            getCurrentAgencyUserAuthenticated();
+        }
+
+
     }, [teamUniqueLink, clientName, clientFolderName])
 
     const handleFileChange = (e) => {
