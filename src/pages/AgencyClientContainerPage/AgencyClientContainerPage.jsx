@@ -51,6 +51,7 @@ const AgencyClientContainerPage = () => {
 
         axios.get(url, config).then((response) => {
             setTasks(response.data.tasks);
+            console.log(response.data)
             setIsLoading(false);
         })
         .catch((error) => {

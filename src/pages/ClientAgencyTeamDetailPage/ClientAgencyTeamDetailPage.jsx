@@ -17,6 +17,7 @@ const ClientAgencyTeamDetailPage = () => {
     const [requests, setRequests] = useState([]);
 
     const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviromentForTest = "http://localhost:8000/";
 
 
     const { agency_team_link, agency_client_container_name } = useParams();
@@ -33,8 +34,12 @@ const ClientAgencyTeamDetailPage = () => {
             }
         }
 
+        // console.log(`current team link is: ${currentTeamUniqueLink}`)
+        // console.log(`current client container is: ${currentClientContainer}`)
+
         axios.get(url, config).then((response) => {
             setRequests(response.data);
+            // console.log(response.data)
             setIsLoading(false);
         }).catch((error) => {
             console.log(error)
@@ -93,14 +98,22 @@ const ClientAgencyTeamDetailPage = () => {
         <div className='main_outer_client_team_detail_page'>
             <div className='container'>
                 <div className='navbar_container'>
-                    <ClientNavbar
+                     <ClientNavbar
                         currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername}
+                        teamUniqueLink={agency_team_link}
+                        agencyClientContainerName={agency_client_container_name}
                     />
                 </div>
 
                 <div className='content_container'>
                     <h2 className="big_title">All previously made requests</h2>
+
+                    <button className="make_new_client_request_btn">
+                        <Link to={`/client_side/agency_client_home/${agency_team_link}/${agency_client_container_name}/create_new_client_request`} className="actual_link">Make new request</Link>
+                    </button>
+
+                    {/* <button onClick={() => getAllPreviousMadeClientRequests()}>get all requests</button> */}
 
                     {isLoading ? (<Loading />) : (
 

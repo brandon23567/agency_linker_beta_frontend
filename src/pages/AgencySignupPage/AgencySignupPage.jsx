@@ -3,8 +3,12 @@ import "./AgencySignupPage.css"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import Loading from '../../components/LoadingComponent/Loading'
 
 const AgencySignupPage = () => {
+
+    const [isLoading, setIsLoading] = useState(true);
+
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [userProfileImg, setUserProfileImg] = useState(null);
@@ -29,14 +33,19 @@ const AgencySignupPage = () => {
             }
         }
 
-        axios.post(url, formData, config).then((response) => {
-            // const { access_token, refresh_token } = response.data;
+        // console.log("your username is ", username)
+        // console.log("your email is ", email)
 
+        axios.post(url, formData, config).then((response) => {
             const new_user_token = response.data.access_token
             Cookies.set("access_token", new_user_token)
-            
             alert("Signup was successful");
             window.location.href = "/select_types/agency_signin";
+            setIsLoading(false);
+        })
+        .catch((error) => {
+            console.log(error);
+            setIsLoading(false);
         })
 
     }
@@ -65,6 +74,31 @@ const AgencySignupPage = () => {
                 <div className='actual_signup_container'>
                     <h2>Signup for a new account here with your agency</h2>
 
+                    {/* {isLoading ? (
+                        <form className='actual_form_container' onSubmit={signNewAgencyUser}>
+                            <div className='single_input'>
+                                <label>Username: </label>
+                                <input type='text' placeholder='Please enter your username' onChange={(e) => setUsername(e.target.value)} />
+                            </div>
+                            <div className='single_input'>
+                                <label>Email: </label>
+                                <input type='email' placeholder='Please enter your email' onChange={(e) => setEmail(e.target.value)} />
+                            </div>
+                            <div className='single_input'>
+                                <label>Profile Image: </label>
+                                <input type='file' onChange={(e) => setUserProfileImg(e.target.files[0])} />
+                            </div>
+                            <div className='single_input'>
+                                <label>Password: </label>
+                                <input type='password' placeholder='Please enter your password' onChange={(e) => setPassword(e.target.value)} />
+                            </div>
+
+                            <div className='signup_btn_container'>
+                                <button type='submit' className='signup_btn'>Sign Up</button>
+                            </div>
+                        </form>
+                    ) : (<Loading />)} */}
+
                     <form className='actual_form_container' onSubmit={signNewAgencyUser}>
                         <div className='single_input'>
                             <label>Username: </label>
@@ -72,7 +106,7 @@ const AgencySignupPage = () => {
                         </div>
                         <div className='single_input'>
                             <label>Email: </label>
-                            <input type='email' placeholder='Please enter your email' onChange={(e) => setEmail(e.target.value)} />
+                            <input type='email' id="email_input" placeholder='Please enter your email' onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div className='single_input'>
                             <label>Profile Image: </label>

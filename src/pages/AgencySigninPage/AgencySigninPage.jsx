@@ -3,8 +3,11 @@ import "./AgencySigninPage.css"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import Loading from '../../components/LoadingComponent/Loading'
 
 const AgencySigninPage = () => {
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -28,16 +31,16 @@ const AgencySigninPage = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
-            // const { access_token, refresh_token } = response.data;
             console.log(response)
             const new_user_token = response.data.access_token
             Cookies.set("access_token", new_user_token)
-			// Cookies.set("refresh_token", refresh_token)
             alert("You have been logged into your account")
+            setIsLoading(false);
             window.location.href = "/agency_teams";
         })
         .catch((error) => {
-            console.log(error)
+            console.log(error);
+            setIsLoading(false);
         })
 
     }
@@ -65,6 +68,23 @@ const AgencySigninPage = () => {
 
                 <div className='actual_signup_container'>
                     <h2>Signin to your account here with your agency</h2>
+
+                    {/* {isLoading ? (<Loading />) : (
+                        <form className='actual_form_container' onSubmit={signNewAgencyUser}>
+                            <div className='single_input'>
+                                <label>Username: </label>
+                                <input type='text' placeholder='Please enter your username' onChange={(e) => setUsername(e.target.value)} />
+                            </div>
+                            <div className='single_input'>
+                                <label>Password: </label>
+                                <input type='password' placeholder='Please enter your password' onChange={(e) => setPassword(e.target.value)} />
+                            </div>
+
+                            <div className='signup_btn_container'>
+                                <button type='submit' className='signup_btn'>Sign In</button>
+                            </div>
+                        </form>
+                    )} */}
 
                     <form className='actual_form_container' onSubmit={signNewAgencyUser}>
                         <div className='single_input'>

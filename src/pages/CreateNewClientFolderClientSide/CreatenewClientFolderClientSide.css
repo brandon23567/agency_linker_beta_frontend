@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_outer_create_folder_container .content_container{
+    margin-left: 270px;
+    margin-right: 16px;
+}
+
+.main_outer_create_folder_container .content_container h2{
+    margin-bottom: 2rem;
+}
+
+.main_outer_create_folder_container .content_container .actual_form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.main_outer_create_folder_container .content_container .actual_form .single_input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_outer_create_folder_container .content_container .actual_form .single_input input{
+    padding: 19px 1.5rem;
+    border: 1px solid rgb(212, 212, 212);
+    margin-bottom: 30px;
+}
+
+.main_outer_create_folder_container .content_container .actual_form .add_new_client_folder_btn_container .add_new_client_folder_btn{
+    background: none;
+    border: none;
+    background-color: blue;
+    padding: 22px 3rem;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 30px;
+}

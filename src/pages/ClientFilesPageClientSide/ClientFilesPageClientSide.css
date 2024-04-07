@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_outer_client_files_clientside_container .content_container{
+    margin-left: 270px;
+    margin-right: 16px;
+}
+
+.main_outer_client_files_clientside_container .content_container h2{
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
+}
+
+.main_outer_client_files_clientside_container .content_container .add_new_client_file_btn{
+    border: none;
+    background: none;
+    padding: 20px 2.5rem;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: blue;
+    margin-bottom: 2rem;
+}
+
+.main_outer_client_files_clientside_container .content_container .add_new_client_file_btn .actual_link_btn{
+    text-decoration: none;
+    color: #fff;
+}

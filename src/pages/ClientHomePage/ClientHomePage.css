@@ -11,6 +11,22 @@
 
 .main_outer_client_home_container .container .content_container h1{
     margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.main_outer_client_home_container .container .content_container .join_agency_team_btn{
+    border: none;
+    background: none;
+    padding: 21px 2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: blue;
+    margin-bottom: 2rem;
+}
+
+.main_outer_client_home_container .container .content_container .join_agency_team_btn .actual_link_btn{
+    text-decoration: none;
+    color: #fff;
 }
 
 .main_outer_client_home_container .container .content_container .current_clients_agency_teams .single_client_agency_team{

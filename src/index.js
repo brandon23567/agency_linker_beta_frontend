@@ -31,8 +31,10 @@ import CreateNewClientRequest from './pages/CreateNewClientRequest/CreateNewClie
 import ClientSideRequestDetailPage from './pages/ClientSideRequestDetailPage/ClientSideRequestDetailPage.jsx';
 import CreateNewClientTaskClientSide from './pages/CreateNewClientTaskClientSide/CreateNewClientTaskClientSide.jsx';
 import ClientTasksPageFromClientSide from './pages/ClientTasksPageFromClientSide/ClientTasksPageFromClientSide.jsx';
-
-
+import CreateNewClientFolderClientSide from './pages/CreateNewClientFolderClientSide/CreateNewClientFolderClientSide.jsx';
+import ClientFoldersPageClientSide from './pages/ClientFoldersPageClientSide/ClientFoldersPageClientSide.jsx';
+import ClientFilesPageClientSide from './pages/ClientFilesPageClientSide/ClientFilesPageClientSide.jsx';
+import CreateNewClientFileClientSide from './pages/CreateNewClientFileClientSide/CreateNewClientFileClientSide.jsx';
 
 import {
   createBrowserRouter,
@@ -136,6 +138,22 @@ const router = createBrowserRouter([
 	{
 		path: "/client_side/agency_client_home/:agency_team_link/:agency_client_container_name",
 		element: <ClientAgencyTeamDetailPage />,
+  	},
+	{
+		path: "/client_side/agency_client_home/:agency_team_link/:agency_client_container_name/create_new_client_folder",
+		element: <CreateNewClientFolderClientSide />,
+  	},
+	{
+		path: "/client_side/agency_client_home/:agency_team_link/:agency_client_container_name/clients_folders",
+		element: <ClientFoldersPageClientSide />,
+  	},
+	{
+		path: "/client_side/agency_client_home/:agency_team_link/:agency_client_container_name/clients_folders/:clientFolderName",
+		element: <ClientFilesPageClientSide />,
+  	},
+	{
+		path: "/client_side/agency_client_home/:agency_team_link/:agency_client_container_name/clients_folders/:clientFolderName/create_new_client_file",
+		element: <CreateNewClientFileClientSide />,
   	},
 	{
 		path: "/client_side/agency_client_home/:agency_team_link/:agency_client_container_name/create_new_task",

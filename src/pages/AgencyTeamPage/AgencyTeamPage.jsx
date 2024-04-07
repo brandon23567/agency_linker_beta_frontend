@@ -28,6 +28,7 @@ const AgencyTeamPage = () => {
 
         axios.get(url, config).then((response) => {
             setCurrentUserTeams(response.data.user_teams);
+            // console.log(response.data)
             setIsLoading(false);
         })
         .catch((error) => {

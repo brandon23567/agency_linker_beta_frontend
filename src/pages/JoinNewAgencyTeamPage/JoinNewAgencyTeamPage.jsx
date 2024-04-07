@@ -29,6 +29,8 @@ const JoinNewAgencyTeamPage = () => {
             }
         }
 
+        // console.log(agencyUniqueLink);
+
         const formData = new FormData();
         formData.append("agencyUniqueLink", agencyUniqueLink)
 

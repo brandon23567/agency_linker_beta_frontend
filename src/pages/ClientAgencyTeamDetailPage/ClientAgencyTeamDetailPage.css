@@ -13,6 +13,21 @@
     margin-bottom: 1.5rem;
 }
 
+.main_outer_client_team_detail_page .container .content_container .make_new_client_request_btn{
+    border: none;
+    background: none;
+    background-color: blue;
+    padding: 21px 2rem;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-bottom: 2rem;
+}
+
+.main_outer_client_team_detail_page .container .content_container .make_new_client_request_btn .actual_link{
+    text-decoration: none;
+    color: #fff;
+}
+
 .main_outer_client_team_detail_page .container .content_container .requests_container .single_request{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

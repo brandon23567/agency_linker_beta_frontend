@@ -9,11 +9,32 @@
     margin-right: 16px;
 }
 
+.main_outer_task_container .container .content_container h2{
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.main_outer_task_container .container .content_container .add_new_client_task_btn{
+    background: none;
+    border: none;
+    background-color: blue;
+    padding: 20px 3rem;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-bottom: 2rem;
+}
+
+.main_outer_task_container .container .content_container .add_new_client_task_btn .actual_btn_link{
+    text-decoration: none;
+    color: #fff;
+}
+
 .main_outer_task_container .container .content_container .tasks_container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 20px;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .main_outer_task_container .container .content_container .tasks_container .single_task{

@@ -54,8 +54,9 @@
 
 .main_agency_team_page_outer_container .container .content_container .users_teams_container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 30px;
+    margin-bottom: 2rem;
 }
 
 .main_agency_team_page_outer_container .container .content_container .users_teams_container .single_team{

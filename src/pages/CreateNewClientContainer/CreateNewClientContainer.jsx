@@ -41,6 +41,8 @@ const CreateNewClientContainer = () => {
             }
         }
 
+        // console.log(teamLinkUrl)
+
         axios.post(url, formData, config).then((response) => {
             alert("New client container has been created");
             setIsLoading(false);

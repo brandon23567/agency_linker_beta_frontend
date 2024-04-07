@@ -31,7 +31,7 @@
 
 .agency_homepage_outer_main_container .container .main_content_container .client_containers_container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 20px;
     margin-top: 2rem;
     margin-bottom: 2rem;

@@ -16,6 +16,7 @@ const ClientSideRequestDetailPage = () => {
     const { teamUniqueLink, clientName, client_request_title } = useParams();
 
     const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviromentForTest = "http://localhost:8000/";
 
 
     const getCurrentActiveClientRequestClientSide = () => {
@@ -98,11 +99,13 @@ const ClientSideRequestDetailPage = () => {
                     <ClientNavbar
                         currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername}
+                        teamUniqueLink={teamUniqueLink}
+                        agencyClientContainerName={clientName}
                     />
                 </div>
 
                 <div className='content_container'>
-                    {isLoading ? (<Loading />) : (
+                    {/* {isLoading ? (<Loading />) : (
 
                         <div className='request_detail_container'>
                             <div className='title_container'>
@@ -118,8 +121,8 @@ const ClientSideRequestDetailPage = () => {
                             </p>
                         </div>
 
-                    )}
-                    {/* <div className='request_detail_container'>
+                    )} */}
+                    <div className='request_detail_container'>
                         <div className='title_container'>
                             <h2>{currentClientRequestData.request_title}</h2>
                         </div>
@@ -131,7 +134,7 @@ const ClientSideRequestDetailPage = () => {
                         <p className='request_body_content'>
                             {currentClientRequestData.client_request_body}
                         </p>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

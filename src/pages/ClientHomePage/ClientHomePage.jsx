@@ -18,9 +18,7 @@ const ClientHomePage = () => {
 	const getAllCurrentClientsTeamsAPartOf = () => {
 		const currentUserToken = Cookies.get("access_token");
 		const url = `${currentDevelopmentEnviroment}api/agency_client_side/get_current_clients_agency_teams/`;
-		axios.defaults.headers.common[
-		"Authorization"
-		] = `Bearer ${currentUserToken}`;
+		axios.defaults.headers.common["Authorization"] = `Bearer ${currentUserToken}`;
 
 		const config = {
 			headers: {
@@ -33,6 +31,7 @@ const ClientHomePage = () => {
 		.get(url, config)
 			.then((response) => {
 				setCurrentClientsAgencyTeams(response.data);
+				console.log(response.data)
 				setIsLoading(false);
 			})
 			.catch((error) => {
@@ -95,6 +94,12 @@ const ClientHomePage = () => {
 			<div className="content_container">
 				<h1>Your current assigned agency team</h1>
 
+				{/* <button onClick={() => getAllCurrentClientsTeamsAPartOf()}>Get current team details</button> */}
+
+				<button className="join_agency_team_btn">
+					<Link to='/client_side/agency_client_home/join_agency_team_clientside' className="actual_link_btn">Join agency team as a client</Link>
+				</button>
+
 				<div className="current_clients_agency_teams">
 					{isLoading ? (<Loading />) : (
 
@@ -103,7 +108,7 @@ const ClientHomePage = () => {
 							<div key={team.team_unique_link} className="single_client_agency_team">
 								<Link to={`/client_side/agency_client_home/${team.team_unique_link}/${team.current_joined_client_container}`} className="actual_link_to_team_detail">
 								<div className="team_leftside">
-									<img src={`http://localhost:8000${team.team_image}`} alt="team" className="current_team_image" />
+									<img src={`${team.team_image}`} alt="team" className="current_team_image" />
 								</div>
 								<div className="team_right_side">
 									<h3>{team.team_name}</h3>
@@ -114,20 +119,6 @@ const ClientHomePage = () => {
 						</div>
 
 					)}
-						{/* <div className="current_clients_agency_teams">
-							{currentClientsAgencyTeams.map((team) => (
-							<div key={team.team_unique_link} className="single_client_agency_team">
-								<Link to={`/client_side/agency_client_home/${team.team_unique_link}/${team.current_joined_client_container}`} className="actual_link_to_team_detail">
-								<div className="team_leftside">
-									<img src={`http://localhost:8000${team.team_image}`} alt="team" className="current_team_image" />
-								</div>
-								<div className="team_right_side">
-									<h3>{team.team_name}</h3>
-								</div>
-								</Link>
-							</div>
-							))}
-						</div> */}
 				</div>
 			</div>
 		</div>

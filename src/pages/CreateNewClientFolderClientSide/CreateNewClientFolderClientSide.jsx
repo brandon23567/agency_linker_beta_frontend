@@ -1,39 +1,27 @@
 import React, { useState, useEffect } from "react";
-import "./CreateNewClientTaskClientSide.css"
+import "./CreatenewClientFolderClientSide.css"
+import { useParams } from 'react-router-dom'
 import ClientNavbar from '../../components/ClientSideNavbar/ClientNavbar'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import { useParams } from 'react-router-dom';
-import Loading from "../../components/LoadingComponent/Loading";
+import { Link } from "react-router-dom";
 
-const CreateNewClientTaskClientSide = () => {
+const CreateNewClientFolderClientSide = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
 
+    const [newFolderName, setNewFolderName] = useState("")
+
     const {agency_team_link, agency_client_container_name} = useParams();
 
-    const [taskTitle, setTaskTitle] = useState("");
-    const [taskDescription, setTaskDescription] = useState("");
-    const [taskDate, setTaskDate] = useState("");
-    const [taskStatus, setTaskStatus] = useState("");
-
-
     const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviromentForTest = "http://localhost:8000/";
 
-
-    const createNewClientTaskClientSide = (e) => {
+    const createNewClientFolder = (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append("taskTitle", taskTitle)
-        formData.append("taskDescription", taskDescription)
-        formData.append("taskDate", taskDate)
-        formData.append("taskStatus", taskStatus)
-
-        const currentTeamLink = agency_team_link
-        const currentClientContainerName = agency_client_container_name
-
-        const url = `${currentDevelopmentEnviroment}api/agency_client_side/create_new_client_task_client_side/${currentTeamLink}/${currentClientContainerName}/`;
+        // const currentUserToken = Cookies.get("access_token");
+        const url = `${currentDevelopmentEnviroment}api/agency_client_side/create_new_client_folder_clientside/${agency_team_link}/${agency_client_container_name}/`
 
         const config = {
             headers: {
@@ -42,14 +30,16 @@ const CreateNewClientTaskClientSide = () => {
             }
         }
 
+        const formData = new FormData()
+        formData.append("folderName", newFolderName)
+
         axios.post(url, formData, config).then((response) => {
-            alert("Your new task has been added");
-            window.location.href = `/client_side/agency_client_home/${agency_team_link}/${agency_client_container_name}/client_tasks_page`
-            // console.log(response.data)
-            // setIsLoading(false);
-        }).catch((error) => {
-            console.log(error);
-            setIsLoading(false);
+            // console.log(response.data);
+            alert("new client folder has been created");
+            window.location.href = `/client_side/agency_client_home/${agency_team_link}/${agency_client_container_name}/clients_folders`
+        })
+        .catch((error) => {
+            console.log(error)
         })
     }
 
@@ -60,7 +50,7 @@ const CreateNewClientTaskClientSide = () => {
         const config = {
             headers: {
                 "Content-Type": "multipart/form-data",
-                Authorization: `Bearer ${currentUserToken}`,
+                "Authorization": `Bearer ${currentUserToken}`,
             },
         };
 
@@ -77,9 +67,8 @@ const CreateNewClientTaskClientSide = () => {
         });
     };
 
-    useEffect(() => {
-        // getCurrentAuthenticatedClientUser();
 
+    useEffect(() => {
         const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
         const cachedUsername = sessionStorage.getItem('currentUserUsername');
 
@@ -90,12 +79,11 @@ const CreateNewClientTaskClientSide = () => {
         } else {
             getCurrentAuthenticatedClientUser();
         }
-
-
     }, [agency_team_link, agency_client_container_name]);
 
+
     return (
-        <div className='main_new_client_task_outer_container'>
+        <div className='main_outer_create_folder_container'>
             <div className="container">
                 <div className="navbar_container">
                     <ClientNavbar
@@ -107,27 +95,15 @@ const CreateNewClientTaskClientSide = () => {
                 </div>
 
                 <div className="content_container">
-                    <h2>Create a new task here</h2>
+                    <h2>Add new folder here</h2>
 
-                    <form className="actual_main_form" onSubmit={createNewClientTaskClientSide}>
+                    <form className="actual_form" onSubmit={createNewClientFolder}>
                         <div className="single_input">
-                            <input type="text" placeholder="Enter task title" onChange={(e) => setTaskTitle(e.target.value)} />
+                            <input type="text" placeholder="Please enter the name of your folder" onChange={(e) => setNewFolderName(e.target.value)} />
                         </div>
 
-                        <div className='single_input'>
-                            <textarea placeholder='Please enter description of the task for others on the team' onChange={(e) => setTaskDescription(e.target.value)}></textarea>
-                        </div>
-
-                        <div className='single_input'>
-                            <input type='text' placeholder='Please enter due date' onChange={(e) => setTaskDate(e.target.value)} />
-                        </div>
-
-                        <div className='single_input'>
-                            <input type='text' placeholder='Please enter current status of task' onChange={(e) => setTaskStatus(e.target.value)} />
-                        </div>
-
-                        <div className='create_new_client_task_btn_container'>
-                            <button className='create_new_client_task_btn' type='submit'>Create Task</button>
+                        <div className="add_new_client_folder_btn_container">
+                            <button type="submit" className="add_new_client_folder_btn">Add Folder</button>
                         </div>
                     </form>
                 </div>
@@ -136,4 +112,4 @@ const CreateNewClientTaskClientSide = () => {
     )
 }
 
-export default CreateNewClientTaskClientSide
+export default CreateNewClientFolderClientSide

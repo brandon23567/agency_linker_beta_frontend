@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_outer_new_client_file_clientside_container .content_container{
+    margin-left: 270px;
+    margin-right: 16px;
+}
+
+.main_outer_new_client_file_clientside_container .content_container h2{
+    font-size: 1.9rem;
+    margin-bottom: 2rem;
+}
+
+.main_outer_new_client_file_clientside_container .content_container .actual_form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_outer_new_client_file_clientside_container .content_container .actual_form .single_input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.main_outer_new_client_file_clientside_container .content_container .actual_form .single_input input{
+    padding: 20px 2rem;
+    border: 1px solid rgb(212, 212, 212);
+    font-size: 15px;
+}
+
+.main_outer_new_client_file_clientside_container .content_container .actual_form .add_new_client_file_btn_container .add_new_client_file_btn{
+    border: none;
+    background: none;
+    background-color: blue;
+    color: #fff;
+    padding: 20px 3rem;
+    border-radius: 30px;
+    cursor: pointer;
+}

@@ -42,6 +42,8 @@ const CreateNewClientRequest = () => {
         }
 
         axios.post(url, formData, config).then((response) => {
+            alert("your new request has been sent to the agency team")
+            console.log(response.data)
             setIsLoading(false);
         }).catch((error) => {
             console.log(error)

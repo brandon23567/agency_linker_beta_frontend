@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_outer_client_folders_page .content_container{
+    margin-left: 270px;
+}
+
+.main_outer_client_folders_page .content_container h2{
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
+}
+
+.main_outer_client_folders_page .content_container .add_new_client_folder_btn{
+    background: none;
+    border: none;
+    background-color: blue;
+    padding: 20px 2.2rem;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-bottom: 2rem;
+}
+
+.main_outer_client_folders_page .content_container .add_new_client_folder_btn .actual_link_btn{
+    text-decoration: none;
+    color: #fff;
+}
+
+.main_outer_client_folders_page .content_container .folders_container .client_folders_container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.main_outer_client_folders_page .content_container .folders_container .client_folders_container .single_folder{
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(212, 212, 212);
+    padding: 20px;
+    cursor: pointer;
+}
+
+.main_outer_client_folders_page .content_container .folders_container .client_folders_container .single_folder:hover{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.main_outer_client_folders_page .content_container .folders_container .client_folders_container .single_folder .single_folder_leftside .folder_icon_img{
+    width: 70px;
+    height: 70px;
+    margin-right: 30px;
+}
+
+.main_outer_client_folders_page .content_container .folders_container .client_folders_container .single_folder .single_folder_rightside .folder_name{
+    text-decoration: none;
+    color: #000;
+}
+
+.main_outer_client_folders_page .content_container .folders_container .client_folders_container .single_folder .single_folder_rightside .folder_name .actual_folder_name{
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}

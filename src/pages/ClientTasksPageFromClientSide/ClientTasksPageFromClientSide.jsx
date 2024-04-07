@@ -5,7 +5,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useParams } from 'react-router-dom';
 import Loading from "../../components/LoadingComponent/Loading";
-
+import { Link } from "react-router-dom";
 
 const ClientTasksPageFromClientSide = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -89,11 +89,17 @@ const ClientTasksPageFromClientSide = () => {
                     <ClientNavbar
                         currentUsersUserProfileImg={`${currentUserProfileImg}`}
                         currentUsersUsername={currentUserUsername}
+                        teamUniqueLink={agency_team_link}
+                        agencyClientContainerName={agency_client_container_name}
                     />
                 </div>
 
                 <div className='content_container'>
                     <h2>All your tasks</h2>
+
+                    <button className="add_new_client_task_btn">
+                        <Link to={`/client_side/agency_client_home/${agency_team_link}/${agency_client_container_name}/create_new_task`} className="actual_btn_link">Add new task</Link>
+                    </button>
 
                     {isLoading ? (<Loading />) : (
 

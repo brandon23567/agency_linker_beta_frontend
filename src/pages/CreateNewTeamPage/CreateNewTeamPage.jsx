@@ -16,6 +16,7 @@ const CreateNewTeamPage = () => {
     const [teamProfileImg, setTeamProfileImg] = useState(null);
 
     const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    // const currentDevelopmentEnviromentForTest = "http://localhost:8000/";
 
     const CreateNewTeam = (e) => {
         e.preventDefault();
@@ -35,8 +36,15 @@ const CreateNewTeamPage = () => {
 
         axios.post(url, formData, config).then((response) => {
             alert("New team has been created");
+
+            // we need a better ui for this pop up not the basic 1
+            alert(`your new agency team link is: ${response.data.agency_team_unique_link} ,   please make sure to copy and share with all team members`)
+            console.log(response.data)
             setIsLoading(false);
             window.location.href = "/agency_teams";
+        })
+        .catch((error) => {
+            console.log(error)
         })
     }
 
