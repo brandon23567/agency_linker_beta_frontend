@@ -39,12 +39,12 @@ const SideNavbar = ({ currentUsersUserProfileImg, currentUsersUsername, teamUniq
                                 Team Members
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to={`/`}>
                                 <FontAwesomeIcon icon={faQuestionCircle} className="nav-icon" />
                                 Help
                             </Link>
-                        </li>
+                        </li> */}
                         <li>
                             <Link to={`/`}>
                                 <FontAwesomeIcon icon={faCog} className="nav-icon" />
