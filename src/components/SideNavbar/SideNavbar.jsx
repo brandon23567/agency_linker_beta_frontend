@@ -46,7 +46,7 @@ const SideNavbar = ({ currentUsersUserProfileImg, currentUsersUsername, teamUniq
                             </Link>
                         </li> */}
                         <li>
-                            <Link to={`/`}>
+                            <Link to={`/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/settings_page`}>
                                 <FontAwesomeIcon icon={faCog} className="nav-icon" />
                                 Settings
                             </Link>

@@ -35,6 +35,7 @@ import CreateNewClientFolderClientSide from './pages/CreateNewClientFolderClient
 import ClientFoldersPageClientSide from './pages/ClientFoldersPageClientSide/ClientFoldersPageClientSide.jsx';
 import ClientFilesPageClientSide from './pages/ClientFilesPageClientSide/ClientFilesPageClientSide.jsx';
 import CreateNewClientFileClientSide from './pages/CreateNewClientFileClientSide/CreateNewClientFileClientSide.jsx';
+import CurrentAgencyTeamSettingsPage from './pages/CurrentAgencyTeamSettingsPage/CurrentAgencyTeamSettingsPage.jsx';
 
 import {
   createBrowserRouter,
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
 	{
 		path: "/agency_teams/agency_home/:teamUniqueLink/agency_home/:clientName/client_folders",
 		element: <ClientFoldersPage />,
+  	},
+	{
+		path: "/agency_teams/agency_home/:teamUniqueLink/agency_home/:clientName/settings_page",
+		element: <CurrentAgencyTeamSettingsPage />,
   	},
 	{
 		path: "/agency_teams/agency_home/:teamUniqueLink/agency_home/:clientName/client_folders/create_new_client_folder",
