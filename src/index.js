@@ -36,6 +36,7 @@ import ClientFoldersPageClientSide from './pages/ClientFoldersPageClientSide/Cli
 import ClientFilesPageClientSide from './pages/ClientFilesPageClientSide/ClientFilesPageClientSide.jsx';
 import CreateNewClientFileClientSide from './pages/CreateNewClientFileClientSide/CreateNewClientFileClientSide.jsx';
 import CurrentAgencyTeamSettingsPage from './pages/CurrentAgencyTeamSettingsPage/CurrentAgencyTeamSettingsPage.jsx';
+import DemoVideoPage from './pages/DemoVideoPage/DemoVideoPage.jsx';
 
 import {
   createBrowserRouter,
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <IndexPage />,
+  	},
+	{
+		path: "/demo_video",
+		element: <DemoVideoPage />,
   	},
 	{
 		path: "/select_types",

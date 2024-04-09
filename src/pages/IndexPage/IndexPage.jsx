@@ -55,7 +55,7 @@ const IndexPage = () => {
                             <Link to="/select_types" className='actual_btn_link'>Signup For Account</Link>
                         </button>
                         <button className='cta_btn demo_vid_btn'>
-                            <Link to="/select_types" className='actual_btn_link'>Check Demo Video</Link>
+                            <Link to="/demo_video" className='actual_btn_link'>Check Demo Video</Link>
                         </button>
                     </div>
                 </div>
