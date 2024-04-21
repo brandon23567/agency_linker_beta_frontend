@@ -4,25 +4,22 @@
 }
 
 .outer_main_new_team_outer_container .container .content_container h2{
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
-
-/* .outer_main_new_team_outer_container .container .content_container {
-    max-width: 600px;
-    margin: 0 auto;
-} */
 
 .outer_main_new_team_outer_container .container .content_container .actual_form_container .single_input{
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-bottom: 25px;
-    border: 1px solid rgb(212, 212, 212);
+    /* border: 1px solid rgb(212, 212, 212); */
 }
 
 .outer_main_new_team_outer_container .container .content_container .actual_form_container .single_input input{
     padding: 17px 17px;
     font-size: 17px;
+    border: 1px solid rgb(212, 212, 212);
+    /* border-radius: 30px; */
 }
 
 .outer_main_new_team_outer_container .container .content_container .actual_form_container .create_new_team_btn_container .create_new_team_btn{
@@ -30,7 +27,7 @@
     background: none;
     border: none;
     color: #fff;
-    background-color: green;
+    background-color: #000;
     cursor: pointer;
     border-radius: 40px;
 }

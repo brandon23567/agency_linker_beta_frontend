@@ -25,19 +25,20 @@
     margin-bottom: 35px;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgb(212, 212, 212);
+    /* border: 1px solid rgb(212, 212, 212); */
 }
 
 .main_join_new_agency_outer_container .container .content_container .form_container .single_input input{
     padding: 17px 1.2rem;
     font-size: 17px;
+    border: 1px solid rgb(212, 212, 212);
 }
 
 .main_join_new_agency_outer_container .container .content_container .form_container .join_team_btn_container .join_team_btn{
     padding: 20px 2.5rem;
     background: none;
     border: none;
-    background-color: green;
+    background-color: #000;
     color: #fff;
     cursor: pointer;
     border-radius: 40px;

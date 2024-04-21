@@ -18,8 +18,9 @@
     top: 0;
     width: 250px;
     height: 100%;
-    background-color: #393e46;
-    color: #fff;
+    background-color: #f7f7f7;
+    /* background-color: #393e46; */
+    color: #000;
     padding-top: 20px;
     overflow-y: auto;
 }
@@ -28,13 +29,13 @@
     text-align: center;
     font-size: 2rem;
     margin-bottom: 30px;
-    color: #fff;
+    color: #000;
     cursor: pointer;
 }
 
 .container .logo .home_link{
     text-decoration: none;
-    color: #fff;
+    color: #000;
 }
 
 .container .nav {
@@ -55,13 +56,14 @@
 .container .nav a {
     display: block;
     padding: 12px 20px;
-    color: #fff;
+    color: #000;
     text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
 .container .nav a:hover {
-    background-color: #5c6773;
+    background-color: #eaeaea;
+    /* background-color: #5c6773; */
 }
 
 .container .nav .active {
@@ -89,7 +91,7 @@
 
 .container .sidenavbar_top_navbar_container .top_navbar_search_container input{
     padding: 16px 1.5rem;
-    border: 2px solid rgb(212, 212, 212);
+    border: 1px solid rgb(212, 212, 212);
     font-size: 15px;
     font-weight: 300;
     width: 100%;

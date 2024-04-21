@@ -33,7 +33,7 @@ const CreateNewClientFilePage = () => {
         formData.append("fileExtension", fileExtension);
 
         try {
-            const url = `${currentDevelopmentEnviroment}create_new_client_file/${actualTeamUniqueLink}/create_client_file/${actualClientName}/${actualClientFolderName}/`
+            const url = `${currentDevelopmentEnviroment}api/agency_side/create_new_client_file/${actualTeamUniqueLink}/create_client_file/${actualClientName}/${actualClientFolderName}/`
             const config = {
                 headers: {
                     "Content-Type": "multipart/form-data",
@@ -43,6 +43,7 @@ const CreateNewClientFilePage = () => {
             await axios.post(url, formData, config).then((response) => {
                 setIsLoading(false);
                 alert("New file has been created and updated")
+                window.location.href = `/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/client_folders/client_files/${clientFolderName}`
             });
         } catch (error) {
             console.error('Error creating new client file:', error.message);

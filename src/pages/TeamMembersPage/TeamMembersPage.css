@@ -19,7 +19,7 @@
     background: none;
     border: none;
     color: #fff;
-    background-color: green;
+    background-color: #000;
     border-radius: 40px;
     cursor: pointer;
 }
@@ -32,11 +32,12 @@
 
 .team_members_page_outer_main_container .container .content_container .team_members_container .single_member{
     padding: 15px;
-    border: 1px solid rgb(212, 212, 212);
+    /* border: 1px solid rgb(212, 212, 212); */
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    background-color: #f7f7f7;
 }
 
 .team_members_page_outer_main_container .container .content_container .team_members_container .single_member:hover{

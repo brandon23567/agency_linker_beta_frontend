@@ -39,12 +39,6 @@ const SideNavbar = ({ currentUsersUserProfileImg, currentUsersUsername, teamUniq
                                 Team Members
                             </Link>
                         </li>
-                        {/* <li>
-                            <Link to={`/`}>
-                                <FontAwesomeIcon icon={faQuestionCircle} className="nav-icon" />
-                                Help
-                            </Link>
-                        </li> */}
                         <li>
                             <Link to={`/agency_teams/agency_home/${teamUniqueLink}/agency_home/${clientName}/settings_page`}>
                                 <FontAwesomeIcon icon={faCog} className="nav-icon" />

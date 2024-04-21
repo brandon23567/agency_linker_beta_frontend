@@ -97,10 +97,6 @@ const AgencyTeamPage = () => {
                 <div className='content_container'>
                     <h2>All the teams you are a part of</h2>
 
-                    {/* <button onClick={() => deleteLocalStorageStuff()}>
-                        Delete local storage for nwo
-                    </button> */}
-
                     <div className='add_new_team_btn_container'>
                         <button className='add_new_team_btn'>
                             <Link to={`/agency_teams/create_new_team`} className='actual_link'>Add New Team</Link>
@@ -125,17 +121,6 @@ const AgencyTeamPage = () => {
                         </div>
 
                     )}
-
-                    {/* <div className='users_teams_container'>
-                        {currentUserTeams.map((single_team, index) => (
-                            <div className='single_team' key={index}>
-                                <Link to={`/agency_teams/${single_team.team_unique_link}/agency_home`} className='link_to_agency_team_page'><h2 className='team_name'>{single_team.team_name}</h2></Link>
-                                <p className='created_by'>Created by: @{single_team.user_who_created}</p>
-                                <p className='assigned_client'>Client assigned: {single_team.client_assigned}</p>
-                                <p className='number_of_members'>Team Members: {single_team.num_members}</p>
-                            </div>
-                        ))}
-                    </div> */}
                 </div>
             </div>
         </div>

@@ -92,8 +92,6 @@ const AgencyHomePage = () => {
     }
 
     useEffect(() => {
-        // getCurrentAgencyUserAuthenticated();
-        
         const cachedProfileImg = sessionStorage.getItem('currentUserProfileImg');
         const cachedUsername = sessionStorage.getItem('currentUserUsername');
 
@@ -155,29 +153,6 @@ const AgencyHomePage = () => {
                         </div>
 
                     )}
-
-                    {/* <div className='client_containers_container'>
-                        {clientContainers.map((container, index) => (
-                            <div className='single_client' key={index}>
-                                <Link to={`/agency_teams/agency_home/${currentTeamLink}/agency_home/${container.client_name}`} className='actual_container_link'>
-                                    <div className='client_top_part'>
-                                        <h2>{container.client_name}</h2>
-                                    </div>
-                                    <div className='client_bottom_part'>
-                                        <p className='client_description'>
-                                            {container.client_description}
-                                        </p>
-                                        <p className='client_email'>
-                                            Client Email: {container.client_email}
-                                        </p>
-                                        <p className='client_budget'>
-                                            Client Budget: {container.client_budget}
-                                        </p>
-                                    </div>
-                                </Link>
-                            </div>
-                        ))}
-                    </div> */}
                 </div>
             </div>
         </div>

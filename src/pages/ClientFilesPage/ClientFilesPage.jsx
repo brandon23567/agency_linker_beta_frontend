@@ -58,6 +58,8 @@ const ClientFilesPage = () => {
                 return TestFileIcon1;
             case 'ppt':
                 return TestFileIcon3;
+            case 'pptx':
+                return TestFileIcon3;
             case 'txt':
                 return TestFileIcon4;
             case 'xlsx':

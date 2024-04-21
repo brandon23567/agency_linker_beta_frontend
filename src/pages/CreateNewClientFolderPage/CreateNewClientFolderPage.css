@@ -33,6 +33,7 @@
     border: none;
     border-radius: 40px;
     cursor: pointer;
-    background-color: blue;
+    background-color: #000;
     color: #fff;
+    margin-top: 1.3rem;
 }
