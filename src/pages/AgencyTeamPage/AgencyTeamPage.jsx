@@ -15,6 +15,7 @@ const AgencyTeamPage = () => {
     const [currentUserTeams, setCurrentUserTeams] = useState([])
 
     const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviromentForTest = "http://localhost:8000/"
 
 
     const getAllTeamsCurrentUserIsAPartOf = () => {
@@ -40,7 +41,7 @@ const AgencyTeamPage = () => {
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`
+        const url = `${currentDevelopmentEnviromentForTest}api/authentication/get_current_agency_user/`
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -56,6 +57,9 @@ const AgencyTeamPage = () => {
 
             setCurrentUserProfileImg(profileImageUrl);
             setCurrentUserUsername(usersUsername);
+
+            console.log(response.data);
+            console.log("hello there from the function");
 
             sessionStorage.setItem('currentUserProfileImg', profileImageUrl);
             sessionStorage.setItem('currentUserUsername', usersUsername);
@@ -96,6 +100,8 @@ const AgencyTeamPage = () => {
 
                 <div className='content_container'>
                     <h2>All the teams you are a part of</h2>
+
+                    <button onClick={() => getCurrentAgencyUserAuthenticated()}>Test functionality</button>
 
                     <div className='add_new_team_btn_container'>
                         <button className='add_new_team_btn'>

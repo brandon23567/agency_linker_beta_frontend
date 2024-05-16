@@ -17,11 +17,11 @@
 .main_outer_task_container .container .content_container .add_new_client_task_btn{
     background: none;
     border: none;
-    background-color: blue;
+    background-color: #000;
     padding: 20px 3rem;
     cursor: pointer;
     border-radius: 30px;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .main_outer_task_container .container .content_container .add_new_client_task_btn .actual_btn_link{
@@ -38,14 +38,16 @@
 }
 
 .main_outer_task_container .container .content_container .tasks_container .single_task{
-    border: 1px solid rgb(212, 212, 212);
+    /* border: 1px solid rgb(212, 212, 212); */
     padding: 22px;
     border-radius: 30px;
+    border-radius: 30px;
     cursor: pointer;
+    background-color: #f7f7f7;
 }
 
 .main_outer_task_container .container .content_container .tasks_container .single_task:hover{
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease-in-out;
 }
 

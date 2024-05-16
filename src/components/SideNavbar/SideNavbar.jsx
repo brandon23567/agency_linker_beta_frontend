@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faFolder, faUser, faCog, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faFolder, faUser, faCog } from '@fortawesome/free-solid-svg-icons';
 import "./SideNavbar.css";
 import RefreshToken from '../../components/RefreshToken/RefreshToken';
 

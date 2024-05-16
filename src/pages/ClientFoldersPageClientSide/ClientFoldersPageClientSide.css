@@ -16,7 +16,7 @@
 .main_outer_client_folders_page .content_container .add_new_client_folder_btn{
     background: none;
     border: none;
-    background-color: blue;
+    background-color: #000;
     padding: 20px 2.2rem;
     cursor: pointer;
     border-radius: 30px;
@@ -37,13 +37,16 @@
 .main_outer_client_folders_page .content_container .folders_container .client_folders_container .single_folder{
     display: flex;
     align-items: center;
-    border: 1px solid rgb(212, 212, 212);
+    /* border: 1px solid rgb(212, 212, 212); */
     padding: 20px;
+    border-radius: 30px;
     cursor: pointer;
+    background-color: #f7f7f7;
+    /* background-color: #b4deef; */
 }
 
 .main_outer_client_folders_page .content_container .folders_container .client_folders_container .single_folder:hover{
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease-in-out;
 }
 

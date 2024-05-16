@@ -36,7 +36,7 @@
 .main_outer_new_client_file_clientside_container .content_container .actual_form .add_new_client_file_btn_container .add_new_client_file_btn{
     border: none;
     background: none;
-    background-color: blue;
+    background-color: #000;
     color: #fff;
     padding: 20px 3rem;
     border-radius: 30px;
