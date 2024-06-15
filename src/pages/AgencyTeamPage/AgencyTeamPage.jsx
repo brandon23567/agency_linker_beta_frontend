@@ -41,7 +41,7 @@ const AgencyTeamPage = () => {
     const getCurrentAgencyUserAuthenticated = () => {
 
         const currentUserToken = Cookies.get("access_token");
-        const url = `${currentDevelopmentEnviromentForTest}api/authentication/get_current_agency_user/`
+        const url = `${currentDevelopmentEnviroment}api/authentication/get_current_agency_user/`
         axios.defaults.headers.common['Authorization'] = `Bearer ${currentUserToken}`;
         const config = {
             headers: {
@@ -100,8 +100,6 @@ const AgencyTeamPage = () => {
 
                 <div className='content_container'>
                     <h2>All the teams you are a part of</h2>
-
-                    <button onClick={() => getCurrentAgencyUserAuthenticated()}>Test functionality</button>
 
                     <div className='add_new_team_btn_container'>
                         <button className='add_new_team_btn'>
