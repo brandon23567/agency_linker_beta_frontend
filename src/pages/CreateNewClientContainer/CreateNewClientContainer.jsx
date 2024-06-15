@@ -19,7 +19,7 @@ const CreateNewClientContainer = () => {
     const [clientEmail, setClientEmail] = useState("");
     const [clientBudget, setClientBudget] = useState("");
 
-    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviroment = "https://agencylinkerpro.pythonanywhere.com/";
 
 
     const createNewClientContainer = (e) => {

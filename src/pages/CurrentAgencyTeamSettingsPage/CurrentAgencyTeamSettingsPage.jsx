@@ -10,7 +10,7 @@ const CurrentAgencyTeamSettingsPage = () => {
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState(null);
     const [currentUserUsername, setCurrentUserUsername] = useState("");
 
-    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviroment = "https://agencylinkerpro.pythonanywhere.com/";
 
     const testDevEnviroment = "http://localhost:8000/";
 

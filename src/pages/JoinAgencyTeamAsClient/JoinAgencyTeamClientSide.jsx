@@ -13,7 +13,7 @@ const JoinAgencyTeamClientSide = () => {
     const [teamUniqueLink, setTeamUniqueLink] = useState("")
     const [currentClientContainerName, setCurrentCloientContainerName] = useState("")
 
-    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviroment = "https://agencylinkerpro.pythonanywhere.com/";
 
 
     const joinAgencyTeamAsClient = (e) => {

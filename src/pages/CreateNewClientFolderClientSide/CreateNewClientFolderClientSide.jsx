@@ -15,7 +15,7 @@ const CreateNewClientFolderClientSide = () => {
 
     const {agency_team_link, agency_client_container_name} = useParams();
 
-    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviroment = "https://agencylinkerpro.pythonanywhere.com/";
     const currentDevelopmentEnviromentForTest = "http://localhost:8000/";
 
     const createNewClientFolder = (e) => {

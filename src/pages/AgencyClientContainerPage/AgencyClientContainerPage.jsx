@@ -8,7 +8,7 @@ import Loading from '../../components/LoadingComponent/Loading'
 
 const AgencyClientContainerPage = () => {
     const [isLoading, setIsLoading] = useState(true);
-    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviroment = "https://agencylinkerpro.pythonanywhere.com/";
 
     const { currentTeamLink, currentClientContainerName } = useParams();
 

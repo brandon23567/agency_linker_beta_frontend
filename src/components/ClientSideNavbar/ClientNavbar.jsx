@@ -1,8 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-// import HomeIcon from "../../images/icons/home-page(1).png";
-// import ClientFilesIcon from "../../images/icons/folder.png";
-// import ClientRequestsIcon from "../../images/icons/customer-service.png";
 import RefreshToken from '../../components/RefreshToken/RefreshToken';
 import "./ClientNavbar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -14,7 +14,7 @@ const AgencyTeamPage = () => {
     const [currentUserUsername, setCurrentUserUsername] = useState("");
     const [currentUserTeams, setCurrentUserTeams] = useState([])
 
-    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviroment = "https://agencylinkerpro.pythonanywhere.com/";
     const currentDevelopmentEnviromentForTest = "http://localhost:8000/"
 
 

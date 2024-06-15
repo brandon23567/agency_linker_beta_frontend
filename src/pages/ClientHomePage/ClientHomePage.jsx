@@ -12,7 +12,7 @@ const ClientHomePage = () => {
 	const [currentUserUsername, setCurrentUserUsername] = useState("");
 	const [currentClientsAgencyTeams, setCurrentClientsAgencyTeams] = useState([]);
 
-	const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+	const currentDevelopmentEnviroment = "https://agencylinkerpro.pythonanywhere.com/";
 
 
 	const getAllCurrentClientsTeamsAPartOf = () => {

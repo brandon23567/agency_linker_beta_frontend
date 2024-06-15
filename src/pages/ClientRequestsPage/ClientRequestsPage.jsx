@@ -16,7 +16,7 @@ const ClientRequestsPage = () => {
 
     const [clientRequests, setClientRequests] = useState([]);
 
-    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviroment = "https://agencylinkerpro.pythonanywhere.com/";
 
 
     const { teamUniqueLink, clientName } = useParams();

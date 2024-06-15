@@ -15,7 +15,7 @@ const CreateNewTeamPage = () => {
     const [teamAssignedClient, setTeamAssignedClient] = useState("");
     const [teamProfileImg, setTeamProfileImg] = useState(null);
 
-    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviroment = "https://agencylinkerpro.pythonanywhere.com/";
     // const currentDevelopmentEnviromentForTest = "http://localhost:8000/";
 
     const CreateNewTeam = (e) => {

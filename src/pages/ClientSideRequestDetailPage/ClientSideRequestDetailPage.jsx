@@ -15,7 +15,7 @@ const ClientSideRequestDetailPage = () => {
 
     const { teamUniqueLink, clientName, client_request_title } = useParams();
 
-    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviroment = "https://agencylinkerpro.pythonanywhere.com/";
     const currentDevelopmentEnviromentForTest = "http://localhost:8000/";
 
 

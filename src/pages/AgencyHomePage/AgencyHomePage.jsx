@@ -18,7 +18,7 @@ const AgencyHomePage = () => {
 
     const [clientContainers, setClientContainers] = useState([]);
 
-    const currentDevelopmentEnviroment = "https://philosophical-marsha-brandon23567-organization.koyeb.app/";
+    const currentDevelopmentEnviroment = "https://agencylinkerpro.pythonanywhere.com/";
 
     const getCurrentTeamUniqueLink = () => {
         const currentLink = {slug}
